@@ -14,3 +14,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+import django_heroku
+django_heroku.settings(locals())
