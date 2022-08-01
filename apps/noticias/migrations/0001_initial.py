@@ -19,6 +19,9 @@ class Migration(migrations.Migration):
                 ('fecha', models.DateTimeField(auto_now=True)),
                 ('texto', models.TextField(null=True)),
                 ('activo', models.BooleanField(default=True)),
+                ('imagenes', models.ImageField(null=True)),
+               
+
             ],
         ),
     ]
