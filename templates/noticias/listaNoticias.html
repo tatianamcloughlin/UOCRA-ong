@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block contenido %}
+
+<h3 class="tituloppal mt-5  pe-3">{{noticia.categoria}}</h3>
+
+    {% if noticia %}
+     <div class="conteiner  mt-4 mb-5 ms-5 me-5" >
+        {% for not in noticia %}
+        <div class="card  sombra m-3" style="width: 24rem; display:inline-block; ">
+            <img src={{not.imagenes.url}} class="card-img-top " alt="...">
+            <div class="card-body">
+                <h6 class="card-title" style="color:rgb(114, 111, 111)">
+                    {{not.fecha.day}}/{{not.fecha.month}}/{{not.fecha.year}}</h6>
+                <h5 class="card-title">{{not.titulo.capitalize}}</h5>
+                <p class="card-text">{{not.introduccion}}</p>
+                <a href=noticia/{{not.id}} class="btn btn-primary botonesForm ">Seguir Leyendo</a>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <h4>No hay noticias</h4>
+        {% endif%}
+
+{% endblock %}

@@ -16,12 +16,19 @@ Including another URLconf
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
-from django.urls import path
-from .views import index
+from django.urls import path, include
+from .views import index,inicio
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index, name='index')
+    path('', index, name='index'),
+    path('inicio', inicio, name='inicio'),
+    path('noticias/', include('apps.noticias.urls')),
+    path('cursos/', include('apps.cursos.urls')),
+
+ 
+    
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 

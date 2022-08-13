@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block contenido %}
+
+
+<nav class="navbar navbar-expand-md bg-light">
+    <div class="container-fluid  ">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" style="padding-right: 75% ;" tid="navbarSupportedContent">
+            <ul class="navbar-nav ms-2 mt-2 me-3 mb-0">
+                <li class="nav-item gx-1">
+                    <a class="nav-link active Fondomenu2 " aria-current="page" href="#infgral">Informacion General</a>
+                </li>
+                <li class="nav-item gx-1">
+                    <a class="nav-link Fondomenu2 " href="cursos/addFotos">Agregar Fotos</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav> 
+<h3 class="tituloppal mt-4  pe-3">GALERIA DE FOTOS</h3>
+
+
+{% if foto %}
+<div class="conteiner ms-5 me-5 mt-2 " id="galeria">
+    <div class="row ">
+        {% for fot in foto %}
+        <div class="col-lg-4 col-md-6 col-sm-12">
+            <img src="{{fot.imagen.url}}">
+            <div>
+                <input type="checkbox" name="activo" class="checkboxinput form-check-input" id="id_activo" checked="">
+                <label for="id_activo" class="form-check-label">
+                    Activo
+                </label>
+                <div>
+                    <a href="eliminar/{{ not.id }}">Eliminar</a></td>
+                </div>
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+
+    <div>
+
+        {% else %}
+        <h4>No hay noticias</h4>
+        {% endif%}
+
+
+    </div>
+</div>
+{% endblock %}

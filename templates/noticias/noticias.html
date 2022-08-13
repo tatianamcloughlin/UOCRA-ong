@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block contenido %}
+
+<div class="container" style="margin-top: 5%;">
+    <div class="card  sombra m-3  pt-3 pb-3" style="width: 100%; margin-top: 10rem; background: #b5d8eb0f;">
+        
+        <h5 class="tituloppal mt-4 pt-2 pb-2 pe-5">{{noticia.categoria}}</h5>
+        <div class="card-body">
+            <div class="row mt-3" style="justify-content:center ;">
+                <div class="col-5 ">
+                    <img src={{noticia.imagenes.url}} class="card-img-top " alt="...">
+                </div>
+                <div class="col-5 ">
+                    <h4 class="card-title me-4" style="text-align:start  ;"> | {{noticia.titulo.capitalize}}</h4>
+                    <h6 class="card-title" style="color:rgb(114, 111, 111)">
+                        {{noticia.fecha.day}}/{{noticia.fecha.month}}/{{noticia.fecha.year}}</h6>
+                    <p class="card-text">{{noticia.texto}}</p>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+    <div class="row">
+        <div>
+            {% include 'comentario/listarcomentario.html' %}
+        </div>
+        
+    </div>
+</div>
+
+{% endblock %}

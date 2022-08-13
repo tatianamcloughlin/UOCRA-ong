@@ -1,10 +1,11 @@
 from django.db import models
+from apps.noticias.models import Noticias
 
 # Create your models here.
 
-class Comentarios (models.Model):
-    titulo = models.CharField(max_length=250, null =False)
-    fecha = models.DateTimeField(auto_now=True)
-    texto = models.TextField (null= True)
-    
+class Comentario(models.Model):
+  
+    noticia = models.ForeignKey(Noticias, on_delete=models.CASCADE)
+    comentario = models.TextField()
+    fecha = models.DateField(auto_now_add=True)
 

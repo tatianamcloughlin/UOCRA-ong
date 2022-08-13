@@ -22,7 +22,7 @@
     <header>
         <nav class="navbar navbar-expand-md bg-light">
             <div class="container-fluid ">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="{% url 'inicio'%}">
                     <img src="{% static 'img/logo.png' %}" alt="logo" height="100">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -33,10 +33,10 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto  mt-5 me-3">
                         <li class="nav-item gx-1">
-                            <a class="nav-link active Fondomenu " aria-current="page" href="#">Inicio</a>
+                            <a class="nav-link active Fondomenu " aria-current="page" href="{% url 'inicio'%}">Inicio</a>
                         </li>
                         <li class="nav-item gx-1">
-                            <a class="nav-link Fondomenu " href="#">Quienes Somos</a>
+                            <a class="nav-link Fondomenu " href="#quienesSomos">Quienes Somos</a>
                         </li>
                         <li class="nav-item dropdown gx-1">
                             <a class="nav-link dropdown-toggle Fondomenu" href="#" role="button"
@@ -44,28 +44,34 @@
                                 Noticias
                             </a>
                             <ul class="dropdown-menu FondomenuDesplegable border-0 text-center ">
-                                {% for cat in categoria%}
+                                {% for cat in categoria %}
 
-                                    <li><a class="dropdown-item FondomenuItem " href="#">{{cat.categoria.capitalize}}</a></li>
-                                    
-                                {% endfor %}          
+                                <li><a class="dropdown-item FondomenuItem " href="noticias/{{cat.nombre}}">{{cat}}</a>
+                                </li>
+
+                                {% endfor %}
+                                <li>
+                                    <a class="dropdown-item FondomenuItemsuperuser  " href="noticias/addNoticias"> Agregar Noticias</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item FondomenuItemsuperuser  " href="noticias/listaNoticias"> Lista de Noticias</a>
+                                </li>
                             </ul>
                         </li>
+                    
                         <li class="nav-item dropdown gx-1">
                             <a class="nav-link dropdown-toggle Fondomenu" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 Ofertas Academicas
                             </a>
                             <ul class="dropdown-menu FondomenuDesplegable border-0 text-center">
-                                <li><a class="dropdown-item FondomenuItem " href="#">curso 1</a></li>
-                                <li><a class="dropdown-item FondomenuItem " href="#">curso 2</a></li>
-                                <li><a class="dropdown-item FondomenuItem " href="#">curso 3</a></li>
-                                <li><a class="dropdown-item FondomenuItem " href="#">curso 4</a></li>
-                                <li><a class="dropdown-item FondomenuItem " href="#">curso 5</a></li>
-                                <li><a class="dropdown-item FondomenuItem " href="#">curso 6</a></li>
-                                <li><a class="dropdown-item FondomenuItem " href="#">curso 7</a></li>
-                                <li><hr class="dropdown-divider"> </li>  
-                                <li><button class="dropdown-item FondoImp"data-bs-toggle="modal" data-bs-target="#inscripcion">Inscribite!</button></li>
+                                {% for cur in cursos %}
+                                <li><a class="dropdown-item FondomenuItem " href="cursos/{{cur.nombre}}">{{cur}}</a></li>
+                                {% endfor %}
+                                
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item FondoImp" href="https://docs.google.com/forms/d/e/1FAIpQLSe0wV2EEhvdd5EzZ_Z7RiEUu_fEkpQjYTC8ZBlazNV8CTKMyQ/viewform" target="_blank">Inscribite!</a></li>
                             </ul>
                         </li>
                         <li class="nav-item Fondomenu">
@@ -76,7 +82,7 @@
 
                 </div>
             </div>
-            <!-- Modal inscripcion -->
+            <!-- Modal inscripcion 
             <div class="modal fade" id="inscripcion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
                 aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -96,11 +102,11 @@
                     </div>
                 </div>
             </div>
-            <!--  cierra Modal inscripcion -->
+            cierra Modal inscripcion -->
             <div>
                 <!-- Button trigger modal inicio secion -->
-                    <img class="expandir m-1 ps-1 " src="{% static 'img/poder.png' %}" alt="ubi" height="50" data-bs-toggle="modal"
-                    data-bs-target="#staticBackdrop">
+                <img class="expandir m-1 ps-1 me-3" src="{% static 'img/poder.png' %}" alt="ubi" height="60"
+                    data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                 <!-- Modal inicio secion-->
                 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
                     tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -145,7 +151,7 @@
         <div>
             <hr class="mb-0">
         </div>
-        <div id="carouselExampleIndicators" class="carousel slide mt-0 pt-0" data-bs-ride="true">
+        <div id="carouselExampleIndicators" class="carousel slide carousel-fade mt-0 pt-0" data-bs-ride="true">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
                     aria-current="true" aria-label="Slide 1"></button>
@@ -157,12 +163,24 @@
             <div class="carousel-inner ">
                 <div class="carousel-item active">
                     <img src="{% static 'img/1.jpg' %}" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h4>APRENDER UN OFICIO TE DA UNA OPORTUNIDAD</h4>
+                        <p>La UEP 149 es un centro de capacitación para obreros de la construcción y la comunidad toda.</p>
+                      </div>
                 </div>
                 <div class="carousel-item">
                     <img src="{% static 'img/2.jpg' %}" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h4>CURSOS DE OFICIO GRATUITOS</h4>
+                        <p>Cursos cuatrimestrales con certificados avalados por el ministerio de educacion.</p>
+                      </div>
                 </div>
                 <div class="carousel-item">
                     <img src="{% static 'img/3.jpg' %}" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h4>MUJERES A LA OBRA!</h4>
+                        <p>Promoviendo la inclusion  de las mujeres en el mundo de la construccion.</p>
+                      </div>
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
@@ -177,56 +195,67 @@
             </button>
         </div>
     </header>
-
-
-    <main>
-        <section>
+          <section>
             {% block contenido %}
             {% endblock %}
         </section>
         <aside>
-          
-            <table id="tabla">
-                <tr id="tr-flecha">
-                    <td style="height: 600px;"></td>
-                </tr>
-                <tbody id="tbody" class="d-none">
-                    <tr>
-                        <td class="td-none "><p  class="ps-2 mt-2">Albañil</p></td>
-                        <td><a href="" ><img class="logoCursos mt-0 " src="{% static 'img/albañil.png' %}" height="100" alt=" logo eletricidad"></a></td>
-                    </tr>
-                    <tr>
-                        <td class="td-none"><p class="ps-2 mt-2">Topografo</p></td>
-                        <td><a href=""><img class="logoCursos mt-0 " src="{% static 'img/ayud.topografo.png' %}" height="100"alt=" logo eletricidad"></a></td>
-                    </tr>
-                    <tr>
-                        <td class="td-none"><p class="ps-2 mt-2">Computación</p></td>
-                        <td><a href=""><img class="logoCursos mt-0 " src="{% static 'img/computacion.png' %}" height="100" alt=" logo eletricidad"></a></td>
-                    </tr>
-                    <tr>
-                        <td class="td-none"><p class="ps-2 mt-2">Electricista</p></td>
-                        <td><a href=""><img class="logoCursos mt-0 " src="{% static 'img/electricista.png' %}" height="100" alt=" logo eletricidad"></a></td>    
-                    </tr>
-                    <tr>
-                        <td class="td-none"><p class="ps-2 mt-2 ">Plomería</p> </td>
-                        <td><a href=""><img class="logoCursos mt-0 " src="{% static 'img/sanitarista.png' %}" height="100" alt=" logo eletricidad"></a></td>
-                    </tr>    
-                    <tr>
-                        <td class="td-none"><p class="ps-2 mt-2">Soldador</p></td>
-                        <td><a href=""><img class="logoCursos mt-0 " src="{% static 'img/soldador.png' %}" height="100" alt=" logo eletricidad"></a></td>                               
-                    </tr>
-                    <tr>
-                        <td class="td-none"><p class="ps-2 mt-2">Diseño Asistido</p></td>
-                        <td><a href=""></a><img class="logoCursos mt-0" src="{% static 'img/diseño.asistido.png' %}" height="100" alt=" logo eletricidad"></a></td>                                
-                    </tr>
-            </tbody>
-            </table>
+            <div id="aside" class="contenedor ">
+                <div id="div-alb" class="div-logo">
+                    
+                    <div id="nom-alb" class="d-none ">
+                        <h6>ALBAÑILERIA</h6>
+                    </div>
+                    <a href="cursos/albañileria"><img class="logoCursos mt-0 desvanecer" src="{% static 'img/albañil2.png' %}" height="100"
+                            alt=" logo albañil"></a>
+                </div>
+                <div id="div-com" class="div-logo">
+                    <div id="nom-com" class="d-none ">
+                        <h6>COMPUTACION</h6>
+                    </div>
+                    <a href="cursos/computacion"><img class="logoCursos mt-0 desvanecer" src="{% static 'img/computacion2.png' %}" height="100"
+                            alt=" logo computacion"></a>
+                </div>
+                <div id="div-top" class="div-logo">
+                    <div id="nom-top" class="d-none ">
+                        <h6>AYUDANTE DE TOPOGRAFO</h6>
+                    </div>
+                    <a href="cursos/ayudante de topografo"><img class="logoCursos mt-0 desvanecer" src="{% static 'img/ayud.topografo2.png' %}" height="100"
+                            alt=" logo topografo"></a>
+                </div>
+                <div id="div-ele" class="div-logo">
+                    <div id="nom-ele" class="d-none ">
+                        <h6>ELECTRICISTA</h6>
+                    </div>
+                    <a href="cursos/electricista"><img class="logoCursos mt-0 desvanecer" src="{% static 'img/electricista2.png' %}" height="100"
+                            alt=" logo eletricidad"></a>
+                </div>
+                <div id="div-dis" class="div-logo">
+                    <div id="nom-dis" class="d-none ">
+                        <h6>DISEÑO ASISTIDO </h6>
+                    </div>
+                    <a href="cursos/diseño asistido"><img class="logoCursos mt-0 desvanecer" src="{% static 'img/diseño.asistido2.png' %}" height="100"
+                            alt=" logo eletricidad"></a>
+                </div>
+                <div id="div-san" class="div-logo">
+                    <div id="nom-san" class="d-none ">
+                        <h6>SANITARISTA</h6>
+                    </div>
+                    <a href="cursos/sanitarista"><img class="logoCursos mt-0 desvanecer" src="{% static 'img/sanitarista2.png' %}" height="100"
+                            alt=" logo eletricidad"></a>
+                </div>
+                <div id="div-sol" class="div-logo">
+                    <div id="nom-sol" class="d-none ">
+                        <h6>SOLDADOR</h6>
+                    </div>
+                    <a href="cursos/soldador"><img class="logoCursos mt-0 desvanecer" src="{% static 'img/soldador2.png' %}" height="100"
+                            alt=" logo eletricidad"></a>
+                </div>
+                
         </aside>
-    </main>
-  
-  
-  
-    <footer>
+ 
+           <footer>
+        <a href="#" class="volver"><img src="{% static 'img/flecha.png' %}" alt=""></a>
         <hr class="mb-0">
         <div class="container-fluid mt-0 Fondofooter">
             <div class="row  pt-4 pb-4 mt-0">
@@ -238,11 +267,11 @@
                     </button>
                     <!--modal ubicacion-->
                     <div class="modal fade" id="mapagoogle" data-bs-backdrop="static" data-bs-keyboard="false"
-                        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >
                         <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4>UBICACION</h4>
+                            <div class="modal-content"style="background:#b5d8eb ;">
+                                <div class="modal-header" >
+                                    <h4 style="color:#0b5184 ;">UBICACION</h4>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
 
@@ -258,25 +287,27 @@
                         </div>
                     </div>
                     <!-- cierre modal ubicacion-->
-                    <p class="fs-4 mb-0"> Av. Coronel Falcón 196</p>
-                    <p class="fs-4 mt-0"> Resistencia, Chaco </p>
+                    <p class="fs-5 mb-0"> Av. Coronel Falcón 196</p>
+                    <p class="fs-5 mt-0"> Resistencia, Chaco </p>
                 </div>
-                <div class="col-4 text-center expandir mt-2 me-5 "><img src="{% static 'img/logo footer.png' %}"
-                        alt="logo" height="210">
+                <div class="col-4 text-center expandir mt-2 me-5 ">
+                        <a href="{% url 'inicio' %}" ><img src="{% static 'img/logo footer.png' %}" alt="logo" height="210">
+                        </a> 
                 </div>
+                
                 <div class="col-3  justify-content-around pt-3" id="contactos">
-                    <p class="fs-4 "><a href="https://www.facebook.com/uepuocra" target="_blank">
+                    <p class="fs-6 "><a href="https://www.facebook.com/uepuocra" target="_blank">
                             <img class="expandir " hspace="15" src="{% static 'img/facebook.png' %}" alt="face"
-                                height="50">
+                                height="40">
                         </a> uepuocra
                     </p>
-                    <p class="fs-4 "><a href="https://www.instagram.com/uegp149uocra/" target="_blank">
+                    <p class="fs-6 "><a href="https://www.instagram.com/uegp149uocra/" target="_blank">
                             <img class="expandir" hspace="15" src="{% static 'img/instagram.png' %}" alt="inst"
-                                height="50">
+                                height="40">
                         </a> uegp149uocra
                     </p>
-                    <p class="fs-5 "><img class="expandir" hspace="15" src="{% static 'img/email.png' %}" alt="nolog"
-                            height="50">
+                    <p class="fs-6 "><img class="expandir" hspace="15" src="{% static 'img/email.png' %}" alt="nolog"
+                            height="40">
                         uep149@hotmail.com
                     </p>
                 </div>
@@ -285,7 +316,7 @@
 
         </div>
     </footer>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
@@ -293,8 +324,7 @@
         integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
         crossorigin="anonymous"></script>
     <script src="{% static 'js/js.js' %}"></script>
-    
+
 </body>
 
 </html>
-
