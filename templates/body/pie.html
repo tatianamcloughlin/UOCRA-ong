@@ -1,0 +1,73 @@
+{% load static %}
+    <footer>
+        <hr class="mb-0">
+        <div class="container-fluid mt-0 Fondofooter">
+            <div class="row  pt-4 pb-4 mt-0">
+                <div class="col-1"></div>
+                <div class="col-3 pt-4 text-center">
+                    <button style="background-color: transparent; border: 0;" data-bs-toggle="modal"
+                        data-bs-target="#mapagoogle">
+                        <img class="expandir m-1 ps-1" src="{% static 'img/ubicacion.png' %}" alt="ubi" height="70">
+                    </button>
+                    <!--modal ubicacion-->
+                    <div class="modal fade" id="mapagoogle" data-bs-backdrop="static" data-bs-keyboard="false"
+                        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4>UBICACION</h4>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+
+                                </div>
+                                <div>
+                                    <iframe class=""
+                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d405.8951890513648!2d-58.99853829056465!3d-27.4364138816142!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xced6826508366bbd!2sEFP4%20ESCUELA%20DE%20FORMACI%C3%93N%20PROFESIONAL%20N%C2%B0%204!5e0!3m2!1ses-419!2sar!4v1659194873328!5m2!1ses-419!2sar"
+                                        width="480" height="500" style="border:1;" allowfullscreen="" loading="lazy"
+                                        referrerpolicy="no-referrer-when-downgrade">
+                                    </iframe>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- cierre modal ubicacion-->
+                    <p class="fs-4 mb-0"> Av. Coronel Falcón 196</p>
+                    <p class="fs-4 mt-0"> Resistencia, Chaco </p>
+                </div>
+                <div class="col-4 text-center expandir mt-2 me-5 "><img src="{% static 'img/logo footer.png' %}"
+                        alt="logo" height="210">
+                </div>
+                <div class="col-3  justify-content-around pt-3" id="contactos">
+                    <p class="fs-4 "><a href="https://www.facebook.com/uepuocra" target="_blank">
+                            <img class="expandir " hspace="15" src="{% static 'img/facebook.png' %}" alt="face"
+                                height="50">
+                        </a> uepuocra
+                    </p>
+                    <p class="fs-4 "><a href="https://www.instagram.com/uegp149uocra/" target="_blank">
+                            <img class="expandir" hspace="15" src="{% static 'img/instagram.png' %}" alt="inst"
+                                height="50">
+                        </a> uegp149uocra
+                    </p>
+                    <p class="fs-5 "><img class="expandir" hspace="15" src="{% static 'img/email.png' %}" alt="nolog"
+                            height="50">
+                        uep149@hotmail.com
+                    </p>
+                </div>
+                <div class="col-1"></div>
+            </div>
+
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+        crossorigin="anonymous"></script>
+    <script src="{% static 'js/js.js' %}"></script>
+    
+</body>
+
+</html>

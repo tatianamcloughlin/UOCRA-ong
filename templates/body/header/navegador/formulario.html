@@ -1,0 +1,57 @@
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="staticBackdropLabel">Iniciar Secion</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                {% if validacion == 1 %}
+                    <div>
+                        <h6>Usuario: {{mensaje}}</h6>
+                        <h6>Usuario: {{usuario.0.username}}</h6>
+                        <h6>Email: {{usuario.0.email}}</h6>
+                        <h6>Ultima sesion: {{usuario.0.last_login}}</h6>
+                        <form action="" method="post"> {% csrf_token %}
+                            <input type="number" name="cerrar" id="" class="d-none" value=1>
+                            <input type="submit" value="Cerrar Session">
+                        </form>
+                    </div>
+                {% else %}
+                <form action="" method="post"> {% csrf_token %}
+                
+                    <div class="mb-3">
+                        <input type="number" name="cerrar" id="" class="d-none" value=0>
+                        <label for="exampleInputEmail1" class="form-label">Email</label>
+
+                        <input type="email" name="usuario" class="form-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp">
+                        <div id="emailHelp" class="form-text">Nunca compartiremos su correo electrónico
+                            con nadie más.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+                        <input type="password"name="password" class="form-control" id="exampleInputPassword1">
+                    </div>
+                    <div class="mb-2"><h4>{{mensaje}}</h4></div>
+                    <div class="mb-3 form-check">
+                        <input  type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Recuerdame!</label>
+                    </div>
+                    <div class="modal-footer">
+                        <input value="Iniciar" type="submit" class="btn btn-primary botonesForm">
+                        <input value="Registrarme" type="submit" class="btn btn-secondary botonesForm"
+                            data-bs-dismiss="modal">
+                    </div>
+                </form>
+                {%endif%}
+                
+            </div>
+            
+        </div>
+    </div>
+
+</div>

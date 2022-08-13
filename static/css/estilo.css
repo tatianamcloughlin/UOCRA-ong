@@ -40,7 +40,7 @@ hr {
    object-fit: cover;
  }
    
- table{
+ .tabla{
    float: right;
    
    background-color: #f3e49b99 ;
@@ -53,7 +53,7 @@ hr {
 
  }
  
-table tr td{
+.tabla tr td{
    padding-left: 20px;
    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
  }

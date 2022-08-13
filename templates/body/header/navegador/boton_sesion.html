@@ -1,0 +1,6 @@
+{% load static %}
+{% if validacion == 1 %}
+    <img class="expandir m-1 ps-1 " src="{% static 'img/logeado.png' %}" alt="ubi" height="50" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+{% else %}    
+    <img class="expandir m-1 ps-1 " src="{% static 'img/poder.png' %}" alt="ubi" height="50" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+{% endif %}

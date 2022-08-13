@@ -1,0 +1,21 @@
+
+<div class="conteiner-fluid">
+    <div class="d-flex justify-content-around mt-5 mb-5">
+        {% for not in noticia  %}
+            <div class="card  sombra m-3" style="width: 25rem; ; ">
+                <img src=media/{{not.imagenes}} class="card-img-top " alt="...">
+                <div class="card-body">
+                    <h6 class="card-title" style="color:rgb(114, 111, 111)">{{not.fecha.day}}/{{not.fecha.month}}/{{not.fecha.year}}</h6>
+                    <h5 class="card-title">{{not.titulo.capitalize}}</h5>
+                    <p class="card-text">{{not.introduccion}}</p>
+                    <a href=noticias/?id={{not.id}} class="btn btn-primary botonesForm ">Seguir Leyendo</a>
+                </div>
+            </div>
+        {% endfor %}
+            
+
+              
+           
+          
+    </div>
+</div>

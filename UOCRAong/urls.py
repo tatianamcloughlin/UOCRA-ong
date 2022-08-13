@@ -18,10 +18,12 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
 from .views import index
+from .views import noticias
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index, name='index')
+    path('', index, name='index'),
+    path('noticias/', noticias, name='noticias')
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 

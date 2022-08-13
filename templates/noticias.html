@@ -1,0 +1,87 @@
+{% include "body/cabezera.html" %}
+{% load static %}
+ <div class="d-flex justify-content-center">
+   <div class="mt-5 container">
+    {% for not in noticia  %}
+        <div class="container">
+            <div class="d-flex justify-content-center" style="max-width: 100%;">
+                <h1>{{not.titulo}}</h1>
+            </div>
+           
+        </div>
+        
+        
+        
+        <div class="container mt-5">
+            <p class="h4">{{not.texto}}</p>
+        </div>
+        <div class="container mt-5">
+            <div>
+                <div class="d-flex justify-content-center">
+                    <h6 class="h6">{{not.introduccion}}</h6>   
+                </div>
+                <div class="d-flex justify-content-center">
+                    <img class="w-100" style="max-width:800px" src={% static 'media/' %}{{not.imagenes}} alt="">
+                </div>
+                    
+                
+            </div>
+        </div>
+
+        
+        
+        <div class="container mt-5">
+            <p class="h4">{{not.texto_imagen_2}}</p>
+        </div>
+        <div class="container mt-5">
+            <div >
+                <div class="d-flex justify-content-center">
+                    <h6 class="h6">{{not.introduccion_imagen_2}}</h6></td>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <img class="w-100"  style="max-width:800px" src={% static 'media/' %}{{not.imagenes_2}} alt="">
+                </div>                   
+                      
+                
+            </div>
+        </div>
+
+        <div class="container mt-5">
+            <p class="h4">{{not.texto_imagen_3}}</p>
+        </div>
+        <div class="container mt-5">
+            <div >
+                <div class="d-flex justify-content-center">
+                    <h6 class="h6">{{not.introduccion_imagen_3}}</h6>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <img class="w-100"  style="max-width:800px" src={% static 'media/' %}{{not.imagenes_3}} alt=""> 
+                </div>
+            </div>
+        </div>
+    
+        <div class="container mt-5">
+            <p class="h4">{{not.texto_imagen_4}}</p>
+        </div>
+        <div class="container mt-5">
+            <div >
+                <div class="d-flex justify-content-center">
+                    <h6 class="h6">{{not.introduccion_imagen_4}}</h6>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <img class="w-100"  style="max-width:800px" src={% static 'media/' %}{{not.imagenes_4}} alt=""> 
+                </div>
+            </div>
+        </div>
+    
+   
+   
+    {% endfor %}
+    </div>
+   
+</div>
+
+{% include "body/pie.html" %}
+
+
+    

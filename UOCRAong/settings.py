@@ -35,7 +35,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'apps.noticias',
     'apps.comentario',
-    'apps.categoria',
+    'apps.curso',
+    'django_cleanup.apps.CleanupConfig',
+    
+   
     
 
 ]
