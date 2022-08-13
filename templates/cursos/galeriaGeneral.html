@@ -11,19 +11,32 @@
         </button>
         <div class="collapse navbar-collapse" style="padding-right: 75% ;" tid="navbarSupportedContent">
             <ul class="navbar-nav ms-2 mt-2 me-3 mb-0">
-                <li class="nav-item gx-1">
-                    <a class="nav-link active Fondomenu2 " aria-current="page"
-                        href="{% url 'apps.cursos:curso' curso  %}">Informacion General</a>
-                </li>
+
                 <li class="nav-item gx-1">
                     <a class="nav-link Fondomenu2 " href="{% url 'apps.cursos:addFotos'  %}">Agregar Fotos</a>
                 </li>
+                <li class="nav-item dropdown gx-1">
+                    <a class="nav-link dropdown-toggle Fondomenu" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Buscar Fotos
+                    </a>
+                    <ul class="dropdown-menu FondomenuDesplegable border-0 text-center">
+                        {% for cur in cursos %}
+                        <li><a class="dropdown-item FondomenuItem " href="{% url 'apps.cursos:galeria' cur.nombre %}">{{cur}}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+
+
+            </ul>
+
+            </li>
             </ul>
         </div>
     </div>
 </nav>
-<h4 class="tituloppal mt-4  pe-3 pt-1 pb-1" style="width: 50%;">Galieria de Fotos del curso {{curso.nombre.capitalize}}
-</h4>
+<h3 class="tituloppal mt-4  pe-3">GALERIA DE FOTOS GENERAL</h3>
 
 
 {% if foto %}
@@ -43,21 +56,16 @@
             </div>
 
         </div>
-        
         {% endfor %}
     </div>
-</div>
+
+    <div>
+
+        {% else %}
+        <h4>No hay noticias</h4>
+        {% endif%}
 
 
-</div>
-
-<div>
-
-    {% else %}
-    <h4>No hay noticias</h4>
-    {% endif%}
-
-
-</div>
+    </div>
 </div>
 {% endblock %}

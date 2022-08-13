@@ -21,6 +21,9 @@ class Noticias(models.Model):
     activo = models.BooleanField( default =True)
     imagenes = models.ImageField(upload_to="noticias/",null=True)
 
+    def __str__(self):
+        return self.titulo
+
 
 
   

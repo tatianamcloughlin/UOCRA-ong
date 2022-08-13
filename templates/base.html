@@ -46,15 +46,15 @@
                             <ul class="dropdown-menu FondomenuDesplegable border-0 text-center ">
                                 {% for cat in categoria %}
 
-                                <li><a class="dropdown-item FondomenuItem " href="noticias/{{cat.nombre}}">{{cat}}</a>
+                                <li><a class="dropdown-item FondomenuItem " href="{% url 'apps.noticias:listaNoticias' cat %}">{{cat}}</a>
                                 </li>
 
                                 {% endfor %}
                                 <li>
-                                    <a class="dropdown-item FondomenuItemsuperuser  " href="noticias/addNoticias"> Agregar Noticias</a>
+                                    <a class="dropdown-item FondomenuItemsuperuser  " href="{% url 'apps.noticias:addNoticias' %}"> Agregar Noticias</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item FondomenuItemsuperuser  " href="noticias/listaNoticias"> Lista de Noticias</a>
+                                    <a class="dropdown-item FondomenuItemsuperuser  " href="{% url 'apps.noticias:lista' %}"> Lista de Noticias</a>
                                 </li>
                             </ul>
                         </li>
@@ -66,13 +66,16 @@
                             </a>
                             <ul class="dropdown-menu FondomenuDesplegable border-0 text-center">
                                 {% for cur in cursos %}
-                                <li><a class="dropdown-item FondomenuItem " href="cursos/{{cur.nombre}}">{{cur}}</a></li>
+                                <li><a class="dropdown-item FondomenuItem " href="{% url 'apps.cursos:curso' cur %}">{{cur}}</a></li>
                                 {% endfor %}
                                 
                                     <hr class="dropdown-divider">
                                 </li>
                                 <li><a class="dropdown-item FondoImp" href="https://docs.google.com/forms/d/e/1FAIpQLSe0wV2EEhvdd5EzZ_Z7RiEUu_fEkpQjYTC8ZBlazNV8CTKMyQ/viewform" target="_blank">Inscribite!</a></li>
+                                <li><a class="dropdown-item FondomenuItemsuperuser  " href="{% url 'apps.cursos:addFotos'  %}"> Agregar Fotos</a></li>
+                                <li><a class="dropdown-item FondomenuItemsuperuser  " href="{% url 'apps.cursos:gal'  %}"> Galeria fotos</a></li>
                             </ul>
+                            
                         </li>
                         <li class="nav-item Fondomenu">
                             <a class="nav-link" href="#contactos">Contactos</a>
@@ -82,27 +85,7 @@
 
                 </div>
             </div>
-            <!-- Modal inscripcion 
-            <div class="modal fade" id="inscripcion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-                aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4>Formulario de Inscripcion</h4>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 
-                        </div>
-                        <div>
-                            <iframe class=""
-                                src="https://docs.google.com/forms/d/e/1FAIpQLSe0wV2EEhvdd5EzZ_Z7RiEUu_fEkpQjYTC8ZBlazNV8CTKMyQ/viewform"
-                                width="480" height="500" style="border:1;" allowfullscreen="" loading="lazy"
-                                referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            cierra Modal inscripcion -->
             <div>
                 <!-- Button trigger modal inicio secion -->
                 <img class="expandir m-1 ps-1 me-3" src="{% static 'img/poder.png' %}" alt="ubi" height="60"
@@ -161,21 +144,21 @@
                     aria-label="Slide 3"></button>
             </div>
             <div class="carousel-inner ">
-                <div class="carousel-item active">
+                <div class="carousel-item active" data-bs-interval="2000">
                     <img src="{% static 'img/1.jpg' %}" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h4>APRENDER UN OFICIO TE DA UNA OPORTUNIDAD</h4>
                         <p>La UEP 149 es un centro de capacitación para obreros de la construcción y la comunidad toda.</p>
                       </div>
                 </div>
-                <div class="carousel-item">
+                <div class="carousel-item" data-bs-interval="2000">
                     <img src="{% static 'img/2.jpg' %}" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h4>CURSOS DE OFICIO GRATUITOS</h4>
                         <p>Cursos cuatrimestrales con certificados avalados por el ministerio de educacion.</p>
                       </div>
                 </div>
-                <div class="carousel-item">
+                <div class="carousel-item" data-bs-interval="2000">
                     <img src="{% static 'img/3.jpg' %}" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h4>MUJERES A LA OBRA!</h4>
@@ -201,57 +184,16 @@
         </section>
         <aside>
             <div id="aside" class="contenedor ">
-                <div id="div-alb" class="div-logo">
-                    
-                    <div id="nom-alb" class="d-none ">
-                        <h6>ALBAÑILERIA</h6>
+                {% for cur in cursos %}
+                <div id= '{{cur.nombre}}' class="div-logo">                   
+                    <div id='{{cur.id}}' class="d-none ">
+                        <h6 class="pe-3">{{cur}}</h6>
                     </div>
-                    <a href="cursos/albañileria"><img class="logoCursos mt-0 desvanecer" src="{% static 'img/albañil2.png' %}" height="100"
+                    <a href="{% url 'apps.cursos:curso' cur %}"><img class="logoCursos mt-0 desvanecer" src="{{cur.logo.url}}" height="100"
                             alt=" logo albañil"></a>
                 </div>
-                <div id="div-com" class="div-logo">
-                    <div id="nom-com" class="d-none ">
-                        <h6>COMPUTACION</h6>
-                    </div>
-                    <a href="cursos/computacion"><img class="logoCursos mt-0 desvanecer" src="{% static 'img/computacion2.png' %}" height="100"
-                            alt=" logo computacion"></a>
-                </div>
-                <div id="div-top" class="div-logo">
-                    <div id="nom-top" class="d-none ">
-                        <h6>AYUDANTE DE TOPOGRAFO</h6>
-                    </div>
-                    <a href="cursos/ayudante de topografo"><img class="logoCursos mt-0 desvanecer" src="{% static 'img/ayud.topografo2.png' %}" height="100"
-                            alt=" logo topografo"></a>
-                </div>
-                <div id="div-ele" class="div-logo">
-                    <div id="nom-ele" class="d-none ">
-                        <h6>ELECTRICISTA</h6>
-                    </div>
-                    <a href="cursos/electricista"><img class="logoCursos mt-0 desvanecer" src="{% static 'img/electricista2.png' %}" height="100"
-                            alt=" logo eletricidad"></a>
-                </div>
-                <div id="div-dis" class="div-logo">
-                    <div id="nom-dis" class="d-none ">
-                        <h6>DISEÑO ASISTIDO </h6>
-                    </div>
-                    <a href="cursos/diseño asistido"><img class="logoCursos mt-0 desvanecer" src="{% static 'img/diseño.asistido2.png' %}" height="100"
-                            alt=" logo eletricidad"></a>
-                </div>
-                <div id="div-san" class="div-logo">
-                    <div id="nom-san" class="d-none ">
-                        <h6>SANITARISTA</h6>
-                    </div>
-                    <a href="cursos/sanitarista"><img class="logoCursos mt-0 desvanecer" src="{% static 'img/sanitarista2.png' %}" height="100"
-                            alt=" logo eletricidad"></a>
-                </div>
-                <div id="div-sol" class="div-logo">
-                    <div id="nom-sol" class="d-none ">
-                        <h6>SOLDADOR</h6>
-                    </div>
-                    <a href="cursos/soldador"><img class="logoCursos mt-0 desvanecer" src="{% static 'img/soldador2.png' %}" height="100"
-                            alt=" logo eletricidad"></a>
-                </div>
-                
+                {% endfor %}
+
         </aside>
  
            <footer>

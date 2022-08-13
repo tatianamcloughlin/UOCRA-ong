@@ -15,7 +15,7 @@
                         {{not.fecha.day}}/{{not.fecha.month}}/{{not.fecha.year}}</h6>
                     <h5 class="card-title">{{not.titulo.capitalize}}</h5>
                     <p class="card-text">{{not.introduccion}}</p>
-                    <a href=noticias/noticia/{{not.id}} class="btn btn-primary botonesForm ">Seguir Leyendo</a>
+                    <a href="{% url 'apps.noticias:noticia' not.id %}" class="btn btn-primary botonesForm ">Seguir Leyendo</a>
                 </div>
             </div>
             {% endfor %}

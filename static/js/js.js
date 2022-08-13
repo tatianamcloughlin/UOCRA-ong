@@ -1,13 +1,16 @@
 
+logos=['Albañileria','Computacion','Ayudante de Topografo','Electricista','Diseño Asistido','Sanitarista','Soldador' ]
+
+/* hacer ciclo for */
 
 const aside = document.getElementById('aside');
-const logoal = document.getElementById('div-alb');
-const logoa2 = document.getElementById('div-com');
-const logoa3 = document.getElementById('div-top');
-const logoa4 = document.getElementById('div-ele');
-const logoa5 = document.getElementById('div-dis');
-const logoa6 = document.getElementById('div-san');
-const logoa7 = document.getElementById('div-sol');
+const logoal = document.getElementById('Albañileria');
+const logoa2 = document.getElementById('Computacion');
+const logoa3 = document.getElementById('Ayudante de Topografo');
+const logoa4 = document.getElementById('Electricista');
+const logoa5 = document.getElementById('Diseño Asistido');
+const logoa6 = document.getElementById('Sanitarista');
+const logoa7 = document.getElementById('Soldador');
 
 
 
@@ -18,48 +21,50 @@ function divFlotante(){
 
 divFlotante()
 window.onresize = divFlotante;
+    
+
 
 logoal.addEventListener('mouseover',(e)=>{
-    document.getElementById('nom-alb').setAttribute('class',"")})
+    document.getElementById('1').setAttribute('class',"")})
 
 logoal.addEventListener('mouseout',(e)=>{
-    document.getElementById('nom-alb').setAttribute('class',"d-none")})
+    document.getElementById('1').setAttribute('class',"d-none")})
 
 logoa2.addEventListener('mouseover',(e)=>{
-        document.getElementById('nom-com').setAttribute('class',"")})
+        document.getElementById('2').setAttribute('class',"")})
     
 logoa2.addEventListener('mouseout',(e)=>{
-        document.getElementById('nom-com').setAttribute('class',"d-none")})
+        document.getElementById('2').setAttribute('class',"d-none")})
 
 logoa3.addEventListener('mouseover',(e)=>{
-        document.getElementById('nom-top').setAttribute('class',"")})
+        document.getElementById('3').setAttribute('class',"")})
     
 logoa3.addEventListener('mouseout',(e)=>{
-        document.getElementById('nom-top').setAttribute('class',"d-none")})
+        document.getElementById('3').setAttribute('class',"d-none")})
 
 logoa4.addEventListener('mouseover',(e)=>{
-        document.getElementById('nom-ele').setAttribute('class',"")})
+        document.getElementById('4').setAttribute('class',"")})
     
 logoa4.addEventListener('mouseout',(e)=>{
-        document.getElementById('nom-ele').setAttribute('class',"d-none")})
+        document.getElementById('4').setAttribute('class',"d-none")})
 
 logoa5.addEventListener('mouseover',(e)=>{
-        document.getElementById('nom-dis').setAttribute('class',"")})
+        document.getElementById('5').setAttribute('class',"")})
     
 logoa5.addEventListener('mouseout',(e)=>{
-        document.getElementById('nom-dis').setAttribute('class',"d-none")})
+        document.getElementById('5').setAttribute('class',"d-none")})
 
 logoa6.addEventListener('mouseover',(e)=>{
-        document.getElementById('nom-san').setAttribute('class',"")})
+        document.getElementById('6').setAttribute('class',"")})
     
 logoa6.addEventListener('mouseout',(e)=>{
-        document.getElementById('nom-san').setAttribute('class',"d-none")})
+        document.getElementById('6').setAttribute('class',"d-none")})
 
 logoa7.addEventListener('mouseover',(e)=>{
-        document.getElementById('nom-sol').setAttribute('class',"")})
+        document.getElementById('7').setAttribute('class',"")})
     
 logoa7.addEventListener('mouseout',(e)=>{
-        document.getElementById('nom-sol').setAttribute('class',"d-none")})
+        document.getElementById('7').setAttribute('class',"d-none")})
 
 /*
 tabla.addEventListener('mouseover',(e)=>{
