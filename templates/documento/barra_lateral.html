@@ -1,0 +1,13 @@
+<aside>
+    <div id="aside" class="contenedor  d-none">
+        {% for cur in cursos %}
+        <div id= '{{cur.nombre}}' class="div-logo">                   
+            <div id='{{cur.id}}' class="">
+                <h6 class="pe-3">{{cur}}</h6>
+            </div>
+            <a href="{% url 'apps.cursos:curso' cur %}"><img class="logoCursos mt-0 desvanecer" src="{{cur.logo.url}}" height="100"
+                    alt=" logo albañil"></a>
+        </div>
+        {% endfor %}
+    </div>
+</aside>

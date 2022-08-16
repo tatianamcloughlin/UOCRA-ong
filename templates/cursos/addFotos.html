@@ -1,6 +1,6 @@
-{% extends 'base.html' %}
+{% include 'documento/cabezera.html' %}
 {% load static %}
-{% block contenido %}
+
 
 {% load crispy_forms_tags %}
 <div>
@@ -15,4 +15,4 @@
 </form>
 </div>
 
-{% endblock %}
+{% include 'documento/pie_de_pagina.html' %}

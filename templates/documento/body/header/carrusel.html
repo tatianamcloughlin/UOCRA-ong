@@ -1,0 +1,45 @@
+{% load static %}
+
+<div id="carouselExampleIndicators" class="carousel slide carousel-fade mt-0 pt-0" data-bs-ride="true">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+            aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+            aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner ">
+        <div class="carousel-item active" data-bs-interval="2000">
+            <img src="{% static 'img/1.jpg' %}" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h4>APRENDER UN OFICIO TE DA UNA OPORTUNIDAD</h4>
+                <p>La UEP 149 es un centro de capacitación para obreros de la construcción y la comunidad toda.</p>
+            </div>
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+            <img src="{% static 'img/2.jpg' %}" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h4>CURSOS DE OFICIO GRATUITOS</h4>
+                <p>Cursos cuatrimestrales con certificados avalados por el ministerio de educacion.</p>
+            </div>
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+            <img src="{% static 'img/3.jpg' %}" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h4>MUJERES A LA OBRA!</h4>
+                <p>Promoviendo la inclusion  de las mujeres en el mundo de la construccion.</p>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>

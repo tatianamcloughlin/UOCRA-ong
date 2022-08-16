@@ -4,6 +4,7 @@ from apps.cursos.models import Cursos , Galeria
 from apps.noticias.models import Categorias
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
+from UOCRAong.sesion import login
 
 
 
@@ -11,7 +12,11 @@ def curso (request, nombre ):
     curso2= Cursos.objects.get(nombre=nombre)
     categorias= Categorias.objects.all()
     cursos = Cursos.objects.all()
-    return render(request, 'cursos/basecursos.html',{'curso':curso2,'categoria':categorias, 'cursos': cursos})
+    contexto = login(request)
+    contexto['curso'] = curso2
+    contexto['categoria'] = categorias
+    contexto['cursos'] = cursos
+    return render(request, 'cursos/basecursos.html', contexto)
 
 
 
@@ -29,16 +34,26 @@ def ListaFotosPorCurso(request, nombre):
     foto = Galeria.objects.filter(curso = curso1[0].id)  
     cursos = Cursos.objects.all()
     categorias= Categorias.objects.all()
-    return render(request,'cursos/galeria.html', {'foto':foto, 'cursos':cursos,'categoria':categorias, 'curso':curso })
+    contexto = login(request)
+    contexto['foto'] = foto
+    contexto['cursos']= cursos
+    contexto['categoria'] = categorias
+    contexto['curso'] = curso
+
+    return render(request,'cursos/galeria.html', contexto)
 
 
 def MostrarGaleria(request):
     foto = Galeria.objects.all()    
     curso = Cursos.objects.all()
     categorias= Categorias.objects.all()
-    context = {'foto': foto,'cursos':curso,'categoria':categorias}
+    
+    contexto = login(request)
+    contexto['foto'] = foto
+    contexto['cursos'] = curso
+    contexto['categoria'] = categorias
   
-    return render (request, 'cursos/galeriaGeneral.html', context)
+    return render (request, 'cursos/galeriaGeneral.html', contexto)
 
 
 

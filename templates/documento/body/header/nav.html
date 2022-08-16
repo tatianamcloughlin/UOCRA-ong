@@ -1,0 +1,18 @@
+{% load static %}
+<nav class="navbar navbar-expand-md bg-light">
+    <div class="container-fluid ">
+       <!---Logo-->
+       {% include 'documento/body/header/nav/logo.html' %}
+       <!--Boton Celular--> 
+       {% include 'documento/body/header/nav/boton_celular.html' %}
+       <!--Barra navegación-->
+       {% include 'documento/body/header/nav/barra_navegacion.html' %}
+    </div>
+
+
+        <!-- Button trigger modal inicio secion -->
+        {% include 'documento/body/header/nav/boton_login.html' %}
+        <!-- Modal inicio secion-->
+        {% include 'documento/body/header/nav/formulario_login.html' %}
+
+</nav>

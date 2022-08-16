@@ -1,7 +1,7 @@
 
-{% extends 'base.html' %}
+{% include 'documento/cabezera.html' %}
 {% load static %}
-{% block contenido %}
+
 {% load crispy_forms_tags %}
 
 <h4 class="tituloppal mt-5  pe-3"> AGREGAR NOTICIA</h4>
@@ -16,5 +16,5 @@
 
 </form>
 
+{% include 'documento/pie_de_pagina.html' %}
 
-{% endblock %}

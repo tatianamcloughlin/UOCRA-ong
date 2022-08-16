@@ -5,6 +5,7 @@ from django.views.generic.list import ListView
 from .models import Noticias,Categorias
 from apps.cursos.models import Cursos
 from django.http import HttpResponse, HttpResponseRedirect
+from UOCRAong.sesion import login
 
 from django.urls import reverse
 
@@ -21,9 +22,13 @@ def MostrarNoticia(request):
     noticia = Noticias.objects.all()
     categoria = Categorias.objects.all() 
     cursos = Cursos.objects.all()
-    context = {'noticia': noticia,'categoria':categoria, 'cursos':cursos}
+    contexto = login(request)
+    contexto['noticia'] = noticia
+    contexto['categoria']= categoria
+    contexto['cursos'] = cursos
+    
   
-    return render (request, 'noticias/listaNoticiasGeneral.html', context)
+    return render (request, 'noticias/listaNoticiasGeneral.html', contexto)
     
 
 def ListarNoticiaPorCategoria(request, categoria):
@@ -31,13 +36,22 @@ def ListarNoticiaPorCategoria(request, categoria):
     noticia = Noticias.objects.filter(categoria = categoria2[0].id)  
     categoria = Categorias.objects.all() 
     cursos = Cursos.objects.all()
-    return render(request,'noticias/listaNoticias.html', {'noticia':noticia,'categoria':categoria,'cursos':cursos})
+    contexto = login(request)
+    contexto['categoria'] = categoria
+    contexto['noticia'] = noticia
+    contexto['cursos'] = cursos
+    return render(request,'noticias/listaNoticias.html', contexto)
 
 def noticia (request, id):
     noticia = Noticias.objects.get(id=id)
     categoria = Categorias.objects.all()
     cursos = Cursos.objects.all()
-    return render(request, 'noticias/noticias.html',{'noticia':noticia,'categoria':categoria,'cursos':cursos})
+    contexto = login(request)
+    contexto['noticia'] = noticia
+    contexto['categoria'] = categoria
+    contexto['cursos']= cursos
+
+    return render(request, 'noticias/noticias.html',contexto)
 
 def delete(request , id):
     noticia =Noticias.objects.get(id=id)

@@ -1,7 +1,6 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block contenido %}
 
+{% include 'documento/cabezera.html' %}
+{% load static %}
 <h4 class="tituloppal mt-5  pe-3">BIENVENIDOS </h4>
 <h4 style="color:#0b5184" class=" mt-4">|Escuela de Oficios de la Fundación Uocra Seccional Chaco |</h4>
     <div class="conteiner-fluid">
@@ -9,7 +8,7 @@
         <div class="d-flex justify-content-around mt-4 mb-5">
             {% for not in noticia %}
             <div class="card  sombra m-3" style="width: 25rem; ; ">
-                <img src=media/{{not.imagenes}} class="card-img-top " alt="...">
+                <img src=media/{{not.imagenes}} class="card-img-top" alt="...">
                 <div class="card-body">
                     <h6 class="card-title" style="color:rgb(114, 111, 111)">
                         {{not.fecha.day}}/{{not.fecha.month}}/{{not.fecha.year}}</h6>
@@ -81,4 +80,4 @@
     </div>
 
 
-    {% endblock %}
+    {% include 'documento/pie_de_pagina.html' %}

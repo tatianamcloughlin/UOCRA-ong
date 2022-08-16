@@ -17,7 +17,7 @@ class Noticias(models.Model):
     titulo = models.CharField(max_length=250, null =False)
     introduccion = models.TextField(max_length=100, null =True)    
     fecha = models.DateTimeField(auto_now=True)
-    texto = models.TextField(max_length=1300, null= True)
+    texto = RichTextField(null= True)
     activo = models.BooleanField( default =True)
     imagenes = models.ImageField(upload_to="noticias/",null=True)
 
