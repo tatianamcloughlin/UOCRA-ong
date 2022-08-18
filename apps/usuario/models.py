@@ -15,7 +15,9 @@ class UsuarioManager ( BaseUserManager):
             username = username,
             email = self.normalize_email (email),
             nombres = nombres,
-            apellidos = apellidos,)
+            apellidos = apellidos,
+           
+            )
 
         usuario.set_password(password)
         usuario.save()
@@ -27,6 +29,7 @@ class UsuarioManager ( BaseUserManager):
             username = username,  
             nombres = nombres,
             apellidos = apellidos,
+            password = password,
         )
 
         usuario.usuario_administrador = True
