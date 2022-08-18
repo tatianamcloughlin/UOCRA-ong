@@ -41,10 +41,13 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'apps.cursos',
     'django_cleanup.apps.CleanupConfig',
+    'apps.usuario',
     
 
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+AUTH_USER_MODEL= 'usuario.Usuario'
 
 
 MIDDLEWARE = [
