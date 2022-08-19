@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path, include
-from .views import index,inicio
+from .views import index,inicio,formulario
 
 
 urlpatterns = [
@@ -26,6 +26,8 @@ urlpatterns = [
     path('inicio', inicio, name='inicio'),
     path('noticias/', include('apps.noticias.urls')),
     path('cursos/', include('apps.cursos.urls')),
+    path('formulario/', formulario, name='formulario'),
+    
 
  
     

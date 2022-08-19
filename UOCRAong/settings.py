@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-^z376ao5v+7g^c_6^@tyxjejb8*h&d&h$_iz@_)jl!cmhe)d4+'
 
 # Application definition
-
+#'crispy_forms',
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -34,9 +34,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'crispy_forms',
     'apps.noticias',
     'apps.comentario',
+    'apps.alumno',
     'ckeditor',
     'ckeditor_uploader',
     'apps.cursos',

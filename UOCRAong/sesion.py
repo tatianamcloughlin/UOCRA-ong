@@ -1,3 +1,4 @@
+
 from apps.noticias.models import Noticias
 from django.contrib.auth.hashers import check_password
 
@@ -47,7 +48,7 @@ def login(request):
     
 
             
-    datos_usuario = Noticias.objects.raw("SELECT * FROM auth_user WHERE email='{}'".format(usuario))
+    datos_usuario = Noticias.objects.raw("SELECT id,email,nombre, apellido, direccion,password, dni FROM `alumno_myuser` WHERE email='{}'".format(usuario))
     
     try:
         
@@ -68,5 +69,9 @@ def login(request):
     except Exception as e:
         request.session['validacion'] = 0
         mensaje =usuario
+        try:
+            print(mensaje[0].email)
+        except Exception as e:
+            mensaje = "nada"
             
     return {'usuario': datos_usuario,'mensaje':mensaje,'validacion':validacion}
