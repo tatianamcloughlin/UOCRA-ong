@@ -48,7 +48,7 @@ def login(request):
     
 
             
-    datos_usuario = Noticias.objects.raw("SELECT id,email,nombre, apellido, direccion,password, dni FROM `alumno_myuser` WHERE email='{}'".format(usuario))
+    datos_usuario = Noticias.objects.raw("SELECT id,email,nombre, apellido, direccion,password, dni FROM `usuario_myuser` WHERE email='{}'".format(usuario))
     
     try:
         

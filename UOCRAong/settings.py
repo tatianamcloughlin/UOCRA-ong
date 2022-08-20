@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'apps.noticias',
     'apps.comentario',
-    'apps.alumno',
+    'apps.usuario',
     'ckeditor',
     'ckeditor_uploader',
     'apps.cursos',

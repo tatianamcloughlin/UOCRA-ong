@@ -2,9 +2,10 @@ from django.db import models
 from django.contrib.auth.models import (
     BaseUserManager, AbstractBaseUser
 )
-
-
+from django.db import connection
+from django.contrib.auth.hashers import make_password
 class MyUserManager(BaseUserManager):
+  
     def create_user(self, email, fecha, password=None):
         """
         Creates and saves a User with the given email, date of
@@ -38,10 +39,11 @@ class MyUserManager(BaseUserManager):
 
 
 class MyUser(AbstractBaseUser):
+    
     nombre= models.CharField('Nombre/s',max_length=100,null=True)
     apellido = models.CharField('Apellido/s',max_length=100,null=True)
     email = models.EmailField(  
-        verbose_name='email address',
+        verbose_name='Correo electronico',
         max_length=255,
         unique=True,
     )
@@ -53,15 +55,19 @@ class MyUser(AbstractBaseUser):
     direccion=models.CharField('Dirección',max_length=100,null=True)
     fecha = models.DateField()
     usuario_activo = models.BooleanField(default=True)
+    restablecer = models.BooleanField(default=False)
     es_admin = models.BooleanField(default=False)
-   
-
+    
     objects = MyUserManager()
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['fecha']
 
     def __str__(self):
+        print('guardo')
+        if self.restablecer:
+            with connection.cursor() as cursor:  
+                cursor.execute(f"UPDATE usuario_myuser SET restablecer=0, password='{make_password('{}'.format(self.dni))}' WHERE email='benjidfer@gmail.com'")
         return self.email
 
     def has_perm(self, perm, obj=None):
