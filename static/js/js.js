@@ -17,6 +17,7 @@ const logoa7 = document.getElementById('Soldador');
 
 function divFlotante(){
     aside.style=`margin-left:${document.querySelector('body').clientWidth - aside.clientWidth}px`
+    
 }
 
 divFlotante()
@@ -71,9 +72,10 @@ $(function(){
 CKEDITOR.config.width = 2500; //ancho (px,%,em)
 */
 url = window.location.pathname;
-console.log(url)
 if(url == "/"){
         document.querySelector('body').style="background: #012f50bf;"
         document.querySelector('header').style="display:none"
         document.querySelector('footer').style="display:none"
 }
+
+

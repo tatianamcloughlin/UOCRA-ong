@@ -57,7 +57,7 @@ def login(request):
             request.session['usuario'] = usuario
             request.session['password'] = password
             validacion = 1
-            mensaje="Bienvenido {}".format(datos_usuario[0].username)
+            mensaje="Bienvenido {}".format(datos_usuario[0].email)
            
             
         elif datos_usuario[0].email!=usuario:

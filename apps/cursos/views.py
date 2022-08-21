@@ -52,6 +52,7 @@ def MostrarGaleria(request):
     contexto['foto'] = foto
     contexto['cursos'] = curso
     contexto['categoria'] = categorias
+    
   
     return render (request, 'cursos/galeriaGeneral.html', contexto)
 

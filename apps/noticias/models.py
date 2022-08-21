@@ -1,6 +1,7 @@
 from tkinter import CASCADE
 from django.db import models
 from ckeditor.fields import RichTextField
+from apps.usuario.models import MyUser
 
 
 class Categorias(models.Model):
@@ -23,6 +24,15 @@ class Noticias(models.Model):
 
     def __str__(self):
         return self.titulo
+
+
+class Comentario(models.Model):
+    usuario = models.ForeignKey(MyUser, null=True, on_delete= models.SET_NULL)
+    noticia = models.ForeignKey(Noticias, on_delete=models.CASCADE)
+    comentario = models.TextField()
+    fecha = models.DateField(auto_now_add=True)
+    def __str__(self):
+        return self.comentario
 
 
 
