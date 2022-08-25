@@ -1,4 +1,4 @@
-from tkinter import CASCADE
+from django.db.models.deletion import CASCADE
 from django.db import models
 from ckeditor.fields import RichTextField
 from apps.usuario.models import Usuario
