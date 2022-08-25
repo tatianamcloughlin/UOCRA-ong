@@ -1,65 +1,62 @@
-
-
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
-            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h3 class="modal-title" id="staticBackdropLabel">Iniciar Secion</h3>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                            aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                    {% if validacion == 1 %}
-                            <div>
-                                <h6>Nombre/s: {{usuario.0.nombre}}</h6>
-                                <h6>Apellido/s: {{usuario.0.apellido}}</h6>
-                                <h6>Direccion: {{usuario.0.direccion}}</h6>
-                                <h6>DNI: {{usuario.0.dni}}</h6>
-                        
-                                <h6>Email: {{usuario.0.email}}</h6>
-                                
-                                <form action="" method="post"> {% csrf_token %}
-                                    <input type="number" name="cerrar" id="" class="d-none" value=1>
-                                    <input type="submit" value="Cerrar Session">
-                                </form>
-                            </div>
-                    {% else %}
-                        <form action="" method="post"> {% csrf_token %}
-                    
-                            <div class="mb-3">
-                                <input type="number" name="cerrar" id="" class="d-none" value=0>
-                                <label for="exampleInputEmail1" class="form-label">Email</label>
-        
-                                <input type="email" name="usuario" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp">
-                                <div id="emailHelp" class="form-text">Nunca compartiremos su correo electrónico
-                                    con nadie más.</div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-                                <input type="password"name="password" class="form-control" id="exampleInputPassword1">
-                            </div>
-                            <div class="mb-2"><h4>{{mensaje}}</h4></div>
-                            <div class="mb-3 form-check">
-                                <input  type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">Recuerdame!</label>
-                            </div>
-                            <div class="d-flex justify-content-center">
-                                <input value="Iniciar" type="submit" class="btn btn-primary botonesForm">
-                               
-                            </div>
-                        </form>
-                        <form action="formulario">
-                            <div class="d-flex justify-content-center">
-                                <input value="Registrarme" type="submit" class="btn btn-secondary botonesForm"
-                                data-bs-dismiss="modal">
-                            </div>
-                        </form>
-                    {%endif%}
-                    </div>
-                    
-                </div>
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="staticBackdropLabel" style="color: #11568798;">Tu sesion</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <!-- cierre modal inicio secion-->
+            <div class="modal-body ">
+                {% if validacion == 1 %}
+                <div class=" justify-content-center ">
+                    <h5 style="color: #0b5184;">¡HOLA {{usuario.0.nombre.capitalize}}!</h5>
+
+                    <h6 style="color: #516370;">Apellido/s: {{usuario.0.apellido}}</h6>
+                    <h6 style="color: #516370;">Direccion: {{usuario.0.direccion}}</h6>
+                    <h6 style="color: #516370;">DNI: {{usuario.0.dni}}</h6>
+                    <h6 style="color: #516370;">Email: {{usuario.0.email}}</h6>
+
+                    <form action="" method="post"> {% csrf_token %}
+                        <input type="number" name="cerrar" id="" class="d-none" value=1>
+                        <input class="btn btn-primary botonesForm mt-3" type="submit" value="Cerrar Session">
+                    </form>
+                </div>
+                {% else %}
+                <form action="" method="post"> {% csrf_token %}
+
+                    <div class="mb-3">
+                        <input type="number" name="cerrar" id="" class="d-none" value=0>
+                        <label for="exampleInputEmail1" class="form-label">Email</label>
+
+                        <input type="email" name="usuario" class="form-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp">
+                        <div id="emailHelp" class="form-text">Nunca compartiremos su correo electrónico
+                            con nadie más.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+                        <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Recuerdame!</label>
+                    </div>
+                    <div class="class=modal-footer">
+                        <input value="Iniciar" type="submit" class="btn btn-primary botonesForm">
+                    </div>
+
+                </form>
+               
+                <div class="class=modal-footer">
+                    <a href="{% url 'formulario' %} " style="text-decoration: none">
+                        <input value="Registrarme" type="submit" class="btn btn-secondary botonesForm"
+                            data-bs-dismiss="modal">
+                    </a>
+                </div>
+                {%endif%}
+            </div>
+
         </div>
+    </div>
+    <!-- cierre modal inicio secion-->
+</div>

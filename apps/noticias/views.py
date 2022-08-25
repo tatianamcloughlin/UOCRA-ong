@@ -47,7 +47,7 @@ def noticia (request, id):
     noticia = Noticias.objects.get(id=id)
     categoria = Categorias.objects.all()
     cursos = Cursos.objects.all()
-    comentario = Comentario.objects.raw("SELECT * FROM noticias_comentario WHERE noticia_id=1")
+    comentario = Comentario.objects.filter(noticia_id=id)
     contexto = login(request)
     contexto['noticia'] = noticia
     contexto['categoria'] = categoria
@@ -59,7 +59,7 @@ def noticia (request, id):
         print(request.POST.get('id'))
         print(request.POST.get('idusuario'))
         with connection.cursor() as cursor:
-               cursor.execute(f"INSERT INTO `noticias_comentario` (comentario,fecha,noticia_id,usuario_id) VALUES ('{request.POST.get('contenido')}','{datetime.now()}',{request.POST.get('id')},'{request.POST.get('idusuario')}')")
+               cursor.execute(f"INSERT INTO noticias_comentario (comentario,fecha,noticia_id,usuario_id) VALUES ('{request.POST.get('contenido')}','{datetime.now()}',{request.POST.get('id')},'{request.POST.get('idusuario')}')")
                 
     except Exception as e:
         print(e)

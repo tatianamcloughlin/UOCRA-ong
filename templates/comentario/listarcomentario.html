@@ -1,18 +1,18 @@
 {% load static%}
-{% for item in comentario %}
 
-<div class="row justify-content-md-center ">
-  <div class="col-md-6">
-    <div class="list-group-item d-flex gap-3 py-3" aria-current="true">
-      <img src="{% static 'img/usuario-de-perfil.png' %}" alt="twbs" width="40" height="40" class="rounded-circle flex-shrink-0">
-      <div class="d-flex gap-2 w-100 justify-content-between">
-        <div>
-          <h6 class="mb-0">{{ item.user.username }}</h6>
-          <p class="mb-0 text-break opacity-75">{{ item.comentario }}</p>
-        </div>
-        <small class="opacity-50 text-nowrap">{{ item.fecha }}</small>
-      </div>
-    </div>
+
+
+<!---lista de  comentarios --->
+
+
+<div class="row justify-content-md-center  ms-3 mt-1 ">
+  {% for item in comentarios %}
+<div class="d-flex justify-content-center ps-0 mt-2">
+  <div class="col-12 comentario">
+    <h6 class="mb-1" style="color:#0b5184 ;">{{ item.usuario.usuario }}</h6> <h6 class="card-title" style="color:rgba(114, 111, 111, 0.311);size: 5px;">
+      {{noticia.fecha.day}}/{{noticia.fecha.month}}/{{noticia.fecha.year}}</h6>
+    <p class="mb-1 text-break opacity-65" style=" color: rgb(138, 137, 137);">{{ item.comentario }}</p>
   </div>
-</div>  
+
+</div>
 {% endfor %}

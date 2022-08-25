@@ -40,30 +40,28 @@ class UserCreationForm(forms.ModelForm):
             user.save()
         return user
 
-
+"""
 class UserChangeForm(UserChangeForm):
    
     password = ReadOnlyPasswordHashField()             
 
-    """fila= 0
+    fila= 0
     with connection.cursor() as cursor:
         cursor.execute("SELECT restablecer FROM usuario_myuser WHERE email= 'benjidfer@gmail.com'")
         row = cursor.fetchone()
         fila = row[0]
-    """
+  
     
 
-   
-    class Meta:
+  
+class Meta:
         model = MyUser
         fields = ('email', 'password', 'fecha', 'usuario_activo', 'es_admin')
+
+        with connection.cursor() as cursor:  
+            cursor.execute(f"UPDATE usuario_myuser SET restablecer = '0' WHERE email='benjidfer@gmail.com'")
        
-   
-    
-    with connection.cursor() as cursor:  
-        cursor.execute(f"UPDATE usuario_myuser SET restablecer = '0' WHERE email='benjidfer@gmail.com'")
-       
-    
+"""    
 
 class UserAdmin(BaseUserAdmin):
     # Los formularios para agregar y cambiar instancias de usuario

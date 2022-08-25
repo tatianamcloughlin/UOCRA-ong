@@ -18,6 +18,11 @@
     border-radius: 5px;
     
  }
+ .FondomenuDesplegable2{
+   background-color: #f3e49b;
+   border-radius: 5px;
+   
+}
  .FondomenuItem{
    background-color: #f3e49b;
    border-radius: 5px;
@@ -63,7 +68,7 @@ hr {
  .botonesForm{
    background-color: #0b5184;
    color: #ecf6fa;
-   border: 0
+   border: 0;
  }
 
 
@@ -82,11 +87,13 @@ hr {
  .contenedor{
    width: 7%;
    align-items: center;
-   background: #f0c21b6d;
+   background: #f3e49b;
    margin-top: 3%;
    border-top-left-radius: 40px;
    border-bottom-left-radius: 40px ;
    padding: 1%;
+   position:absolute ;
+   z-index: 2;
  
  
   
@@ -366,17 +373,27 @@ table tr td{
 }
 
 
-#galeria img {
-   width: 100%;
-   height: 280px;
+.imagen {
+   height: 90%;
+   background-size:cover;
    -webkit-filter: grayscale(100%);
 
 }
 
-#galeria .col-lg-4{
-   margin: 0 !important;
+.marcoFoto{
+   height: 600px;
+   margin: 0 ;
+   
    padding: 25px;
    display: inline-block ;
+   background-size:cover;
+   overflow: hidden;
+   text-align: center;
+
+   
+}
+#galeria{
+   margin-right: 5%;
 }
 
 #galeria img:hover{
@@ -390,3 +407,28 @@ table tr td{
    height: 30vw;
 }
 
+.comentario{
+   border-radius: 10px;
+   border: 1px solid #3a48524c;
+   padding: 20px;
+   width: 100%;
+   height: 100%;
+}
+
+.comentar{
+   background-color: #0b5184;
+   color: #ecf6fa;
+   border: 0;
+   border-radius: 5px;
+   border-color: #3c6e90;
+   width: 30%;
+   
+}
+
+
+.comentar:hover{
+   background: #a6d3ec;
+   color: #084766;
+  transform: scale(1,1);
+  
+}

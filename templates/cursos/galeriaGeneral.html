@@ -42,24 +42,21 @@
 <div class="conteiner ms-5 me-5 mt-2 " id="galeria">
     <div class="row ">
         {% for fot in foto %}
-        <div class="col-lg-4 col-md-6 col-sm-12">
-            <img src="{{fot.imagen.url}}">
+        <div class=" marcoFoto col-lg-3 col-md-6 col-sm-12 mb-2">
+            <img class="imagen" src="{{fot.imagen.url}}">
             <div>
-                <input type="checkbox" name="activo" class="checkboxinput form-check-input" id="id_activo" checked="">
-                <label for="id_activo" class="form-check-label">
-                    Activo
-                </label>
-                <div>
-                    <form action="">
-                        <input type="text" value= "{{not.id}}"name="eliminar" id="">
-                        <input type="submit" value="Eliminar">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <div class="d-flex  mt-2 mb-1 " style="justify-content:flex-start">
+                        <input class="d-none" value="{{fot.id}}" name="id.foto" type="text">
+                        <input class="btn btn-primary" type="submit" value="eliminar" name="eliminar">
                         
-                    </form>
-                    
-                </div>
+                    </div>
+                </form>
             </div>
 
         </div>
+
         {% endfor %}
     </div>
 

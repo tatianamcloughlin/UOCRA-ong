@@ -1,13 +1,14 @@
 {% include 'documento/cabezera.html' %}
 {% load static %}
+{% include 'documento/barra_lateral.html' %}
 
+{% if noticia %}
+<h3 class="tituloppal mt-5  pe-3">{{noticia.0.categoria}}</h3>
 
-<h3 class="tituloppal mt-5  pe-3">{{noticia.categoria}}</h3>
-
-    {% if noticia %}
+    
     <div class="conteiner-fluid">
 
-        <div class="d-flex justify-content-around mt-4 mb-5">
+        <div class="d-flex justify-content-around mt-4 mb-5" style="margin-right: 7%;">
             {% for not in noticia %}
             <div class="card  sombra m-3" style="width: 25rem; ; ">
                 <img src={{not.imagenes.url}} class="card-img-top " alt="...">

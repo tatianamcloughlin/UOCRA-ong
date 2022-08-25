@@ -1,3 +1,4 @@
+from multiprocessing import context
 from sqlite3 import Cursor
 from django.shortcuts import render
 from apps.cursos.models import Cursos , Galeria
@@ -6,6 +7,7 @@ from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
 from UOCRAong.sesion import login
 
+from django.db import connection
 
 
 def curso (request, nombre ):
@@ -24,7 +26,7 @@ class addFotos(CreateView):
     model= Galeria
     fields=['curso','imagen','activo' ]
     template_name = 'cursos/addFotos.html'
-    success_url= reverse_lazy ('cursos/cursos/galeria.html')
+    success_url= reverse_lazy ('apps.cursos:galeria')
 
 
 
@@ -47,6 +49,8 @@ def MostrarGaleria(request):
     foto = Galeria.objects.all()    
     curso = Cursos.objects.all()
     categorias= Categorias.objects.all()
+    usuario = MyUserManager.objects.all()
+
     
     contexto = login(request)
     contexto['foto'] = foto
@@ -61,3 +65,20 @@ def MostrarGaleria(request):
 
 
 # Create your views here.
+def EliminarFoto (request): 
+    foto = Galeria.objects.all()    
+    curso = Cursos.objects.all()
+    categorias= Categorias.objects.all()
+    
+    contexto = login(request)
+    contexto['foto'] = foto
+    contexto['cursos'] = curso
+    contexto['categoria'] = categorias
+    
+    try:
+        print(request.POST.get('id.foto'))
+        with connection.cursor() as cursor:
+               cursor.execute (f"DELETE FROM 'cursos_galeria' WHERE id='{request.POST.get('id.foto')}';")
+                
+    except Exception as e:
+        print(e)

@@ -4,7 +4,7 @@
             <a class="nav-link active Fondomenu " aria-current="page" href="{% url 'inicio'%}">Inicio</a>
         </li>
         <li class="nav-item gx-1">
-            <a class="nav-link Fondomenu " href="#quienesSomos">Quienes Somos</a>
+            <a class="nav-link Fondomenu " href="/inicio#quienesSomos">Quienes Somos</a>
         </li>
         <li class="nav-item dropdown gx-1">
             <a class="nav-link dropdown-toggle Fondomenu" href="#" role="button"
@@ -18,12 +18,15 @@
                 </li>
 
                 {% endfor %}
+                {% if myuser.es_admin %}
+              
                 <li>
-                    <a class="dropdown-item FondomenuItemsuperuser  " href="{% url 'apps.noticias:addNoticias' %}"> Agregar Noticias</a>
+                    <a class="dropdown-item FondomenuItemsuperuser  " href="/admin/noticias/noticias/add/"> Agregar Noticias</a>
                 </li>
                 <li>
-                    <a class="dropdown-item FondomenuItemsuperuser  " href="{% url 'apps.noticias:lista' %}"> Lista de Noticias</a>
+                    <a class="dropdown-item FondomenuItemsuperuser  " href="/admin/noticias/noticias/"> Lista de Noticias</a>
                 </li>
+                {% endif %}
             </ul>
         </li>
     
@@ -44,12 +47,14 @@
                 <li>
                     <a class="dropdown-item FondoImp" href="https://docs.google.com/forms/d/e/1FAIpQLSe0wV2EEhvdd5EzZ_Z7RiEUu_fEkpQjYTC8ZBlazNV8CTKMyQ/viewform" target="_blank">Inscribite!</a>
                 </li>
+                {% if myuser.es_admin %}
                 <li>
                     <a class="dropdown-item FondomenuItemsuperuser  " href="{% url 'apps.cursos:addFotos'  %}"> Agregar Fotos</a>
                 </li>
                 <li>
                     <a class="dropdown-item FondomenuItemsuperuser  " href="{% url 'apps.cursos:gal'  %}"> Galeria fotos</a>
                 </li>
+                {% endif %}
             </ul>
             
         </li>

@@ -15,12 +15,15 @@
                 <li class="nav-item gx-1">
                     <a class="nav-link Fondomenu2 " href="{% url 'apps.cursos:galeria' curso %}">Galeria de Foros</a>
                 </li>
+                {% if myuser.es_admin %}
                 <li class="nav-item gx-1">
-                    <a class="nav-link Fondomenu2 " href="cursos/addFotos">Agregar Fotos</a>
+                    <a class="nav-link Fondomenu2 " href="{% url 'apps.cursos:addFotos' %}">Agregar Fotos</a>
                 </li>
+              
                 <li class="nav-item gx-1">
-                    <a class="nav-link Fondomenu2 " href="cursos/addFotos">Editar Informacion</a>
+                    <a class="nav-link Fondomenu2 " href="/admin/cursos/cursos/">Editar Informacion</a>
                 </li>
+                {% endif%}
             </ul>
         </div>
     </div>
@@ -50,16 +53,11 @@
             </div> 
             
         </div>
-        
-        <div class="row">
-            <div>
-                {% include 'comentario/listarcomentario.html' %}
-            </div>
-            
-        </div>
     </div>
+
+
+    {% include 'documento/pie_de_pagina.html' %}
     
 
 
 
-    {% include 'documento/pie_de_pagina.html' %}
