@@ -25,7 +25,7 @@
             <img style="position:absolute ; z-index: 2; top: 40%; left: 10%;" src="{% static 'img/logo.png' %}"
                 alt="logo" height="150">
 
-        
+        <!--
             <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active" data-bs-interval="2000">
@@ -38,7 +38,7 @@
                         <img src="{% static 'img/8.jpg' %}" class="d-block w-100" style="opacity: 0.4" alt="...">
                     </div>
                 </div>
-            </div>
+            </div>-->
 
         </div>
 
@@ -46,7 +46,7 @@
             <h3>REGISTRATE!</h3>
             <h5> Informaicion Personal</h5>
 
-            <form action="" method="POST">
+            <form action="" id="registroFormulario" method="POST">
                 {% csrf_token %}
                 <div class="form-floating-line-height mb-3 ">
                     <input name="nombre_formulario" type="text" class="form-control form-control-sm " id="validationDefault01"
@@ -82,23 +82,57 @@
                         required>
                 </div>
                 <div class="form-floating-line-height mb-3">
-                    <input type="email" name="email" class="form-control" id="floatingInput" placeholder="Email" required>
+                    <input id="email1" type="email" name="email" class="form-control" id="floatingInput" placeholder="Email" required>
                 </div>
                 <div class="form-floating-line-height mb-3">
-                    <input type="email" name="email2" class="form-control" id="floatingInput" placeholder="Confirmar Emali" required>
+                    <input id="email2" type="email" name="email2" class="form-control" id="floatingInput" placeholder="Confirmar Emali" required>
                 </div>
                
                 <div class="form-floating-line-height mb-3">
-                    <input  type="password" name ="password1" class="form-control" id="floatingPassword" placeholder="Contraseña" required>
+                    <input id="psw1" type="password" name ="password1" class="form-control" id="floatingPassword" placeholder="Contraseña" required>
                 </div>
                 <div class="form-floating-line-height mb-3">
-                    <input type="password" name ="password2" class="form-control" id="floatingPassword" placeholder="Confirmar contraseña" required>
+                    <input id="psw2" type="password" name ="password2" class="form-control" id="floatingPassword" placeholder="Confirmar contraseña" required>
                 </div>
                 <div class="col-12" style="justify-content: center;">
-                    <button class="btn btn-primary" type="submit" value="registrar">Registrarme</button>
+                    <button id="btnFormulario" class="btn btn-primary" type="submit" value="registrar">Registrarme</button>
                 </div>
             </form>
 
         </div>
     </div>
 </div>
+
+<script>
+    let password1= document.querySelector('#psw1')
+    let password2= document.querySelector('#psw2')
+    let email1= document.querySelector('#email1')
+    let email2= document.querySelector('#email2')
+    let registroFormulario= document.querySelector('#registroFormulario')
+
+    registroFormulario.addEventListener('submit',(e)=>{
+        
+        if(password1.value!=password2.value){
+            e.preventDefault()
+            password1.focus()
+            password1.style="border-color:red;"
+            password2.style="border-color:red;"
+        }else{
+            password1.style="border-color:none;"
+            password2.style="border-color:none;"
+        }
+        
+        if(email1.value!=email2.value){
+            e.preventDefault()
+            email1.focus()
+            email1.style="border-color:red;"
+            email2.style="border-color:red;"
+        }else{
+            email1.style="border-color:none"
+            email2.style="border-color:none"
+           
+        }
+    })
+   
+
+</script>

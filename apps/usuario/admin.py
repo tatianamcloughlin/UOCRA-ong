@@ -1,15 +1,14 @@
-from turtle import update
+
 from django import forms
 from django.contrib import admin
 from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
-from django.contrib.auth.hashers import make_password
 from django.core.exceptions import ValidationError
 from django.contrib.auth.forms import UserChangeForm
-from django.db import connection
 
-from .models import MyUser
+
+from .models import Usuario
 
 
 class UserCreationForm(forms.ModelForm):
@@ -19,7 +18,7 @@ class UserCreationForm(forms.ModelForm):
     password2 = forms.CharField(label='Password confirmation', widget=forms.PasswordInput)
     
     class Meta:
-        model = MyUser
+        model = Usuario
         fields = ('email', 'fecha')
 
     def clean_password2(self):
@@ -40,28 +39,25 @@ class UserCreationForm(forms.ModelForm):
             user.save()
         return user
 
-"""
+
 class UserChangeForm(UserChangeForm):
    
     password = ReadOnlyPasswordHashField()             
 
-    fila= 0
-    with connection.cursor() as cursor:
-        cursor.execute("SELECT restablecer FROM usuario_myuser WHERE email= 'benjidfer@gmail.com'")
-        row = cursor.fetchone()
-        fila = row[0]
-  
+
     
-
-  
-class Meta:
-        model = MyUser
-        fields = ('email', 'password', 'fecha', 'usuario_activo', 'es_admin')
-
-        with connection.cursor() as cursor:  
-            cursor.execute(f"UPDATE usuario_myuser SET restablecer = '0' WHERE email='benjidfer@gmail.com'")
+    
+   
+    class Meta:
        
-"""    
+        model = Usuario
+        fields = ('email', 'password', 'fecha', 'usuario_activo', 'es_admin')
+       
+   
+    
+   
+       
+    
 
 class UserAdmin(BaseUserAdmin):
     # Los formularios para agregar y cambiar instancias de usuario
@@ -99,7 +95,7 @@ class UserAdmin(BaseUserAdmin):
 
 
 # Ahora registre el nuevo UserAdmin ...
-admin.site.register(MyUser, UserAdmin)
+admin.site.register(Usuario, UserAdmin)
 # ... y, dado que no usamos los permisos integrados de Django,
 # anular el registro del modelo de grupo de admin.
 admin.site.unregister(Group)

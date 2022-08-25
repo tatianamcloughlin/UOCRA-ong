@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'apps.cursos',
     'django_cleanup.apps.CleanupConfig',
-    'crispy_forms',
     
 
 ]

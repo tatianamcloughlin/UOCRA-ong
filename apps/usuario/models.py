@@ -2,9 +2,8 @@ from django.db import models
 from django.contrib.auth.models import (
     BaseUserManager, AbstractBaseUser
 )
-from django.db import connection
 from django.contrib.auth.hashers import make_password
-class MyUserManager(BaseUserManager):
+class UsuarioManager(BaseUserManager):
   
     def create_user(self, email, fecha, password=None):
         """
@@ -38,7 +37,7 @@ class MyUserManager(BaseUserManager):
         return user
 
 
-class MyUser(AbstractBaseUser):
+class Usuario(AbstractBaseUser):
     
     nombre= models.CharField('Nombre/s',max_length=100,null=True)
     apellido = models.CharField('Apellido/s',max_length=100,null=True)
@@ -58,16 +57,19 @@ class MyUser(AbstractBaseUser):
     restablecer = models.BooleanField(default=False)
     es_admin = models.BooleanField(default=False)
     
-    objects = MyUserManager()
+    objects = UsuarioManager()
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['fecha']
 
     def __str__(self):
-        print('guardo')
+
         if self.restablecer:
-            with connection.cursor() as cursor:  
-                cursor.execute(f"UPDATE usuario_myuser SET restablecer=0, password='{make_password('{}'.format(self.dni))}' WHERE email='benjidfer@gmail.com'")
+            
+            self.password=f"{make_password('{}'.format(self.dni))}"
+            self.restablecer=False
+            self.save()
+            print(self.password)
         return self.email
 
     def has_perm(self, perm, obj=None):

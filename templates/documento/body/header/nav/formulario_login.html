@@ -15,6 +15,19 @@
                     <h6 style="color: #516370;">Direccion: {{usuario.0.direccion}}</h6>
                     <h6 style="color: #516370;">DNI: {{usuario.0.dni}}</h6>
                     <h6 style="color: #516370;">Email: {{usuario.0.email}}</h6>
+                    <h6 style="color: #516370;">Cambiar Contraseña</h6>
+                    <form id="formulario_editar_password" method="POST" action="">{% csrf_token %}
+                
+                        <div>
+                            <input  type="password" id="editar_password1" name="editar_password1" placeholder="Contraseña" required>
+                            
+                        </div>
+                        <div>
+                            <input type="password" id="editar_password2" name="editar_password2" placeholder="Repetir Contraseña" required>
+                            <input type="submit" value="Editar">                            
+                        </div>
+                        
+                    </form>
 
                     <form action="" method="post"> {% csrf_token %}
                         <input type="number" name="cerrar" id="" class="d-none" value=1>
@@ -60,3 +73,26 @@
     </div>
     <!-- cierre modal inicio secion-->
 </div>
+
+<script>
+    formulario_editar_password = document.getElementById('formulario_editar_password')
+
+    password_editar1=document.getElementById('editar_password1')
+    password_editar2=document.getElementById('editar_password2')
+    
+
+    formulario_editar_password.addEventListener('submit',(e)=>{
+        
+        if(password_editar1.value!==password_editar2.value){
+            e.preventDefault()
+            password_editar1.style="border-color:red;"
+            password_editar1.focus()
+        }else{
+            password_editar1.style="border-color:none;"
+            
+        }
+    })
+
+
+
+</script>
