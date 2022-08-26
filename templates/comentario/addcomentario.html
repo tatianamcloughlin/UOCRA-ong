@@ -38,7 +38,7 @@
 </div> -->
 
 {% load static %}
-    <form action="" method="POST">
+    <form id="formulariComentario" action="" method="POST">
         {% csrf_token %}
         <div class="d-flex justify-content-center mt-5 ">
             <input class="d-none" value="{{noticia.id}}" name="id" type="text">
@@ -59,4 +59,16 @@
     </form>
 </div>
 
+<script>
+    formulariComentario = document.getElementById('formulariComentario')
 
+    formulariComentario.addEventListener('submit',(e)=>{
+       
+        if(formulariComentario.children[1].children[3].value==""){   
+            e.preventDefault()
+            formulariComentario.children[1].children[3].focus()
+        }
+        
+    })
+
+</script>

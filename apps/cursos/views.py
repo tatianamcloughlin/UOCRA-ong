@@ -1,11 +1,11 @@
-from multiprocessing import context
-from sqlite3 import Cursor
+
 from django.shortcuts import render
 from apps.cursos.models import Cursos , Galeria
 from apps.noticias.models import Categorias
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
 from UOCRAong.sesion import login
+from .models import Galeria
 
 from django.db import connection
 
@@ -42,6 +42,14 @@ def ListaFotosPorCurso(request, nombre):
     contexto['categoria'] = categorias
     contexto['curso'] = curso
 
+
+    try:
+        id_foto= request.POST.get('idFoto')
+        borrar = Galeria.objects.get(id=id_foto)
+        borrar.delete()
+    except Exception as e:
+        print(e)
+
     return render(request,'cursos/galeria.html', contexto)
 
 
@@ -49,7 +57,7 @@ def MostrarGaleria(request):
     foto = Galeria.objects.all()    
     curso = Cursos.objects.all()
     categorias= Categorias.objects.all()
-    usuario = MyUserManager.objects.all()
+   # usuario = MyUserManager.objects.all()
 
     
     contexto = login(request)
