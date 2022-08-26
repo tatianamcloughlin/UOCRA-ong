@@ -374,7 +374,7 @@ table tr td{
 
 
 .imagen {
-   height: 90%;
+  
    background-size:cover;
    -webkit-filter: grayscale(100%);
 

@@ -5,7 +5,7 @@ from apps.noticias.models import Categorias
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
 from UOCRAong.sesion import login
-from .models import Galeria
+
 
 from django.db import connection
 
@@ -73,20 +73,4 @@ def MostrarGaleria(request):
 
 
 # Create your views here.
-def EliminarFoto (request): 
-    foto = Galeria.objects.all()    
-    curso = Cursos.objects.all()
-    categorias= Categorias.objects.all()
-    
-    contexto = login(request)
-    contexto['foto'] = foto
-    contexto['cursos'] = curso
-    contexto['categoria'] = categorias
-    
-    try:
-        print(request.POST.get('id.foto'))
-        with connection.cursor() as cursor:
-               cursor.execute (f"DELETE FROM 'cursos_galeria' WHERE id='{request.POST.get('id.foto')}';")
-                
-    except Exception as e:
-        print(e)
+

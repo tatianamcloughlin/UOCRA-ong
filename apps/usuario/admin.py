@@ -76,7 +76,7 @@ class UserAdmin(BaseUserAdmin):
     fieldsets = (
         (None, {'fields': ('usuario','email', 'password',)}),
         ('Personal info', {'fields': ('nombre','apellido','provincia','ciudad','direccion','dni','cuil','fecha')}),
-        ('Permissions', {'fields': ('usuario_activo','restablecer',)}),
+        ('Permissions', {'fields': ('usuario_activo','restablecer','es_admin',)}),
     )
     # add_fieldsets no es un atributo ModelAdmin estándar. UserAdmin
     # anula get_fieldsets para usar este atributo al crear un usuario.
@@ -98,5 +98,5 @@ class UserAdmin(BaseUserAdmin):
 admin.site.register(Usuario, UserAdmin)
 # ... y, dado que no usamos los permisos integrados de Django,
 # anular el registro del modelo de grupo de admin.
-admin.site.unregister(Group)
+#admin.site.unregister(Group)
 
