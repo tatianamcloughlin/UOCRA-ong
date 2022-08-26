@@ -1,1 +1,1 @@
-web: gunicorn UOCRAong.wsgi --logfile -
+web: gunicorn UOCRAong.wsgi --log-file -
