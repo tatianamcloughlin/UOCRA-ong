@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'apps.cursos',
     'django_cleanup.apps.CleanupConfig',
+    'crispy_forms',
     
 
 ]
@@ -144,21 +145,5 @@ CKEDITOR_CONFIGS = {
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-DEBUG = True
-
-ALLOWED_HOSTS = ['*']
 
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'uocraong',
-        'USER': 'root',
-        'PASSWORD': 'tatiana1989',
-        'HOST': 'localhost',
-        'PORT': '',
-    }
-}
-
-import django_heroku
-django_heroku.settings(locals())

@@ -7,7 +7,7 @@ from django.contrib.auth.hashers import make_password
 from django.db import connection
 
 def inicio(request):
-    noticia = Noticias.objects.all()[:3]
+    noticia = Noticias.objects.all().order_by('-fecha')[:3]
     categoria = Categorias.objects.all()
     cursos = Cursos.objects.all()
     contexto = login(request)

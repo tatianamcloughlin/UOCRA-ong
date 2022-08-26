@@ -1,3 +1,5 @@
+import imp
+from tracemalloc import start
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
@@ -10,6 +12,7 @@ from .form import ComentarioForm
 from django.db import connection
 from django.urls import reverse
 from datetime import datetime
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 # Create your views here.
 
 class addNoticias(CreateView):
@@ -37,11 +40,37 @@ def ListarNoticiaPorCategoria(request, categoria):
     noticia = Noticias.objects.filter(categoria = categoria2[0].id)  
     categoria = Categorias.objects.all() 
     cursos = Cursos.objects.all()
+
+    paginator = Paginator (noticia, 6)
+    page = request.GET.get('page')
+
+    try:
+        items = paginator.page(page)
+    except PageNotAnInteger:
+        items = paginator.page(1)
+    except EmptyPage:
+        items = paginator.page(paginator.num_pages)
+    
+    index = items.number -1
+    max_index = len(paginator.page_range)
+    start_index = index-3 if index >= 3 else 0
+    end_index = index + 3 if index <= max_index -3 else max_index
+    page_range = paginator.page_range[start_index:end_index]
+
     contexto = login(request)
     contexto['categoria'] = categoria
     contexto['noticia'] = noticia
     contexto['cursos'] = cursos
+    contexto['page_range'] = page_range
+    contexto['items']= items
+
+
     return render(request,'noticias/listaNoticias.html', contexto)
+
+
+
+
+
 
 def noticia (request, id):
     noticia = Noticias.objects.get(id=id)

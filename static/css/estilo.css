@@ -432,3 +432,18 @@ table tr td{
   transform: scale(1,1);
   
 }
+
+.pagina1{
+   color: #084298;
+}
+
+.active>.page-link, .page-link.active {
+   z-index: 3;
+   color: var(--bs-pagination-active-color);
+   background-color: #084298;
+   border-color: #084298;
+}
+
+.page-link {
+   color: #084298;
+}

@@ -18,7 +18,7 @@
                 </li>
 
                 {% endfor %}
-                {% if myuser.es_admin %}
+                {% if usuario.0.es_admin %}
               
                 <li>
                     <a class="dropdown-item FondomenuItemsuperuser  " href="/admin/noticias/noticias/add/"> Agregar Noticias</a>
@@ -47,7 +47,7 @@
                 <li>
                     <a class="dropdown-item FondoImp" href="https://docs.google.com/forms/d/e/1FAIpQLSe0wV2EEhvdd5EzZ_Z7RiEUu_fEkpQjYTC8ZBlazNV8CTKMyQ/viewform" target="_blank">Inscribite!</a>
                 </li>
-                {% if myuser.es_admin %}
+                {% if usuario.0.es_admin %}
                 <li>
                     <a class="dropdown-item FondomenuItemsuperuser  " href="{% url 'apps.cursos:addFotos'  %}"> Agregar Fotos</a>
                 </li>

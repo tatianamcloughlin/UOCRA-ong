@@ -55,7 +55,7 @@ class Usuario(AbstractBaseUser):
     fecha = models.DateField()
     usuario_activo = models.BooleanField(default=True)
     restablecer = models.BooleanField(default=False)
-    es_admin = models.BooleanField(default=False)
+    es_admin = models.BooleanField(default=True)
     
     objects = UsuarioManager()
 
