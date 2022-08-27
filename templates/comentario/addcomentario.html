@@ -1,52 +1,14 @@
 
-<!---<div class="row justify-content-md-center ">
-    <div class="col-md-6">
-      <div class="list-group-item gap-3 py-3" aria-current="true">
-        <form method="POST">{%csrf_token%}
-            <div class="mb-3">
-            
-            </div>
-            
-                <input class="btn btn-outline-secondary"type="submit" value="Comentar"/> 
-            {% if validacion %}
-                <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Comentar
-                </button>
-                {% else %}
-                
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Error Comentario</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                Usted tiene que iniciar sesión para poder comentar o registrarse
-                            </div>
-                            <div class="modal-footer">
-                                <a class="btn btn-outline-secondary" href="#" target="_blank">Sign up</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            {% endif %}
-            
-        </form>
-      </div>
-    </div>
-</div> -->
+
 
 {% load static %}
-    <form action="" method="POST">
+    <form id="formulariComentario" action="" method="POST">
         {% csrf_token %}
-        <h6 class="mb-1 ms-4" style="color:#0b5184 ;">{{ usuario.0.usuario.capitalize }}</h6>
-        <div class="d-flex justify-content-center mt-1 ">
+        <div class="d-flex justify-content-center mt-5 ">
             <input class="d-none" value="{{noticia.id}}" name="id" type="text">
             <input class="d-none" value="{{usuario.0.id}}" name="idusuario" type="text">
-            
-            <textarea class="comentario" style="height: 70px; " name="contenido" placeholder="Agruegar un comentario" id="" cols="50" rows="5"></textarea>
-            
+            <h6 class="mb-1" style="color:#0b5184 ;">{{ usuario.usuario }}</h6>
+            <textarea class="comentario" style="height: 70px;" name="contenido" placeholder="Agruegar un comentario" id="" cols="50" rows="5"></textarea>
         </div>
         {% if validacion == 1 %}
             <div class="d-flex  mt-2 mb-1 " style="justify-content:flex-end">
@@ -61,4 +23,17 @@
     </form>
 </div>
 
+<script>
+    formulariComentario = document.getElementById('formulariComentario')
+
+    formulariComentario.addEventListener('submit',(e)=>{
+       
+        if(formulariComentario.children[1].children[3].value==""){   
+            e.preventDefault()
+            formulariComentario.children[1].children[3].focus()
+        }
+        
+    })
+
+</script>
 

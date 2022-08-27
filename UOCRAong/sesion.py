@@ -1,11 +1,18 @@
 
 from apps.usuario.models import Usuario
-from django.contrib.auth.hashers import check_password
+from django.contrib.auth.hashers import check_password,make_password
 
 
 def login(request):      
     """Es para validar al inicar si hay datos post"""
 
+    try:
+        password1 = request.POST.get('editarPassword1')
+        print(password1)
+      
+    except Exception as e:
+        print(e)
+            
 
     try:
         if request.POST.get('cerrar')==1:
@@ -56,8 +63,8 @@ def login(request):
                 request.session['password'] = password
                 validacion = 1
                 mensaje="Bienvenido {}".format(datos_usuario[0].email)
-            
-            
+
+               
        
             else:
                 validacion = 0

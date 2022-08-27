@@ -15,9 +15,9 @@
                 <li class="nav-item gx-1">
                     <a class="nav-link Fondomenu2 " href="{% url 'apps.cursos:galeria' curso %}">Galeria de Foros</a>
                 </li>
-                {% if myuser.es_admin %}
+                {% if usuario.0.es_admin %}
                 <li class="nav-item gx-1">
-                    <a class="nav-link Fondomenu2 " href="{% url 'apps.cursos:addFotos' %}">Agregar Fotos</a>
+                    <a class="nav-link Fondomenu2 " href="/admin/cursos/galeria/add/">Agregar Fotos</a>
                 </li>
               
                 <li class="nav-item gx-1">

@@ -25,7 +25,7 @@
             <img style="position:absolute ; z-index: 2; top: 40%; left: 10%;" src="{% static 'img/logo.png' %}"
                 alt="logo" height="150">
 
-        <!--
+        
             <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active" data-bs-interval="2000">
@@ -46,7 +46,7 @@
             <h3>REGISTRATE!</h3>
             <h5> Informaicion Personal</h5>
 
-            <form action="" id="registroFormulario" method="POST">
+            <form action="{% url 'bienvenida' %}" id="registroFormulario" method="POST">
                 {% csrf_token %}
                 <div class="form-floating-line-height mb-3 ">
                     <input name="nombre_formulario" type="text" class="form-control form-control-sm " id="validationDefault01"
@@ -95,7 +95,7 @@
                     <input id="psw2" type="password" name ="password2" class="form-control" id="floatingPassword" placeholder="Confirmar contraseña" required>
                 </div>
                 <div class="col-12" style="justify-content: center;">
-                    <button id="btnFormulario" class="btn btn-primary" type="submit" value="registrar">Registrarme</button>
+                    <button id="btnFormulario" class="btn btn-primary" type="submit" value="registrar" >Registrarme</button>
                 </div>
             </form>
 

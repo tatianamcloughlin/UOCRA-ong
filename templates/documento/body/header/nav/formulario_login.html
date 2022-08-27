@@ -1,3 +1,4 @@
+{% load static %}
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -15,19 +16,27 @@
                     <h6 style="color: #516370;">Direccion: {{usuario.0.direccion}}</h6>
                     <h6 style="color: #516370;">DNI: {{usuario.0.dni}}</h6>
                     <h6 style="color: #516370;">Email: {{usuario.0.email}}</h6>
-                    <h6 style="color: #516370;">Cambiar Contraseña</h6>
-                    <form id="formulario_editar_password" method="POST" action="">{% csrf_token %}
-                
-                        <div>
-                            <input  type="password" id="editar_password1" name="editar_password1" placeholder="Contraseña" required>
-                            
-                        </div>
-                        <div>
-                            <input type="password" id="editar_password2" name="editar_password2" placeholder="Repetir Contraseña" required>
-                            <input type="submit" value="Editar">                            
-                        </div>
-                        
-                    </form>
+
+                    
+                        <form action="" method="post"  > {% csrf_token %}
+                            <input type="number" name="cambiarContraseña" id="" class="d-none" value=1>
+                            <input class="btn btn-primary botonesForm mt-3 " id="botonCambiarContraseña" type="button" value="Cambiar Contraseña">
+                        </form>
+                        <div class="d-none " id="cambiarContraseña">
+                        <form id="formulario_editar_password " method="POST" action="">{% csrf_token %}
+                            <div class="mb-3">
+                                <input class="form-control" type="password" id="editar_password1"
+                                    name="editar_password1" placeholder="Contraseña Nueva " required>
+                            </div>
+                            <div>
+                                <input class="form-control" type="password" id="editar_password2"
+                                    name="editar_password2" placeholder="Repetir Contraseña" required>
+                                <div class="d-flex  mt-2 mb-1 " style="justify-content: center;">
+                                    <input class="btn btn-primary sombra m-3" type="submit" value="Guardar Cambios">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
 
                     <form action="" method="post"> {% csrf_token %}
                         <input type="number" name="cerrar" id="" class="d-none" value=1>
@@ -59,7 +68,8 @@
                     </div>
 
                 </form>
-               
+
+
                 <div class="class=modal-footer">
                     <a href="{% url 'formulario' %} " style="text-decoration: none">
                         <input value="Registrarme" type="submit" class="btn btn-secondary botonesForm"
@@ -77,21 +87,27 @@
 <script>
     formulario_editar_password = document.getElementById('formulario_editar_password')
 
-    password_editar1=document.getElementById('editar_password1')
-    password_editar2=document.getElementById('editar_password2')
-    
+    password_editar1 = document.getElementById('editar_password1')
+    password_editar2 = document.getElementById('editar_password2')
 
-    formulario_editar_password.addEventListener('submit',(e)=>{
-        
-        if(password_editar1.value!==password_editar2.value){
+
+    formulario_editar_password.addEventListener('submit', (e) => {
+
+        if (password_editar1.value !== password_editar2.value) {
             e.preventDefault()
-            password_editar1.style="border-color:red;"
+            password_editar1.style = "border-color:red;"
             password_editar1.focus()
-        }else{
-            password_editar1.style="border-color:none;"
-            
+        } else {
+            password_editar1.style = "border-color:none;"
+
         }
     })
+
+    boton = document.getElementById('botonCambiarContraseña')
+    boton.addEventListener('click',(e)=>{
+        e.preventDefault()
+        document.getElementById('cambiarContraseña').setAttribute('class',"")})
+
 
 
 

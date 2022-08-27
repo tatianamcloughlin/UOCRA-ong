@@ -1,5 +1,3 @@
-
-
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
@@ -8,18 +6,13 @@ from .models import Noticias,Categorias,Comentario
 from apps.cursos.models import Cursos
 from django.http import HttpResponse, HttpResponseRedirect
 from UOCRAong.sesion import login
-from .form import ComentarioForm
 from django.db import connection
 from django.urls import reverse
 from datetime import datetime
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 # Create your views here.
 
-class addNoticias(CreateView):
-    model= Noticias
-    fields=['categoria','titulo','introduccion', 'texto', 'imagenes','activo' ]
-    template_name = 'noticias/addNoticias.html'
-    success_url= reverse_lazy ('index')
+
 
 
 def MostrarNoticia(request):
@@ -99,22 +92,6 @@ def noticia (request, id):
         return HttpResponseRedirect('/noticias/noticia/{}'.format(id))
     
 
-def delete(request , id):
-    noticia =Noticias.objects.get(id=id)
-    noticia.delete()
-    cursos = Cursos.objects.all()
-    return HttpResponseRedirect(reverse('index'))
 
 
-def AddComentario(request):
-    form = ComentarioForm(request.POST or None)
-    if form.is_valid():
-        form.save()
-        form = ComentarioForm()
-    context={
-        'form': form,
-    }
-    return render(request,'comentario/addcomentario.html', context)
 
-def Comentarios(request):
-    return render(request,'comentario/listarcomentario.html')
