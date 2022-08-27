@@ -14,7 +14,7 @@
     <div style="top: 37%; position: absolute;left: 46%;">
         <a href="{% url 'formulario' %}" class="btn btn-primary botonesForm mt-3 " style="width: 100%;"> REGISTRARME</a>
     </div>
-    {% else %}
+    {% elif alidar_registro == 0 %}
     <div>
         <h5 class="position-absolute " style="top:33% ; left: 33%;">Gracias por registrarce! Ingrese aqui para Iniciar
             Sesion</h5>
