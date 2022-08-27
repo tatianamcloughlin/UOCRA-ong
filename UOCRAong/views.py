@@ -5,6 +5,7 @@ from UOCRAong.sesion import login
 from datetime import datetime
 from django.contrib.auth.hashers import make_password
 from django.db import connection
+from django.http import HttpResponse, HttpResponseRedirect
 
 def inicio(request):
     noticia = Noticias.objects.all().order_by('-fecha')[:3]
@@ -30,13 +31,12 @@ def formulario (request):
 
             #(`password`, `last_login`, `email`, `fecha`, `usuario_activo`, `es_admin`, `apellido`, `direccion`, `dni`, `nombre`, `ciudad`, `cuil`, `provincia`, `usuario`)
             with connection.cursor() as cursor:
-                cursor.execute(f"INSERT INTO `usuario_myuser` (`password`, `last_login`, `email`, `fecha`, `usuario_activo`, `es_admin`, `apellido`, `direccion`, `dni`, `nombre`, `ciudad`, `cuil`, `provincia`, `usuario`) VALUES ('{make_password(request.POST.get('password1'))}', '', '{request.POST.get('email')}', '{datetime.now()}', '0', '0', '{request.POST.get('apellido')}', '{request.POST.get('direccion')}', '{request.POST.get('dni')}', '{request.POST.get('nombre_formulario')}', '{request.POST.get('ciudad')}', '{request.POST.get('dni')}', '{request.POST.get('provincia')}', '{request.POST.get('usuario')}')")
+                cursor.execute(f"INSERT INTO `usuario_usuario` (`password`, `last_login`, `email`, `fecha`, `usuario_activo`, `es_admin`, `apellido`, `direccion`, `dni`, `nombre`, `ciudad`, `cuil`, `provincia`, `usuario`) VALUES ('{make_password(request.POST.get('password1'))}', '', '{request.POST.get('email')}', '{datetime.now()}', '0', '0', '{request.POST.get('apellido')}', '{request.POST.get('direccion')}', '{request.POST.get('dni')}', '{request.POST.get('nombre_formulario')}', '{request.POST.get('ciudad')}', '{request.POST.get('dni')}', '{request.POST.get('provincia')}', '{request.POST.get('usuario')}')")
                 
                 row = cursor.fetchone()
+            return HttpResponseRedirect('inicio')
+
         except Exception as e:
-            print(e)
-    
-
-
-    
+            print(e) 
     return render(request, 'formulario.html')
+    

@@ -1,5 +1,5 @@
-import imp
-from tracemalloc import start
+
+
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
@@ -76,7 +76,7 @@ def noticia (request, id):
     noticia = Noticias.objects.get(id=id)
     categoria = Categorias.objects.all()
     cursos = Cursos.objects.all()
-    comentario = Comentario.objects.filter(noticia_id=id)
+    comentario = Comentario.objects.filter(noticia_id=id,).order_by('-fecha')
     contexto = login(request)
     contexto['noticia'] = noticia
     contexto['categoria'] = categoria
@@ -93,7 +93,11 @@ def noticia (request, id):
     except Exception as e:
         print(e)
 
-    return render(request, 'noticias/noticias.html',contexto)
+        return render(request, 'noticias/noticias.html',contexto)
+
+    else:
+        return HttpResponseRedirect('/noticias/noticia/{}'.format(id))
+    
 
 def delete(request , id):
     noticia =Noticias.objects.get(id=id)

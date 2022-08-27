@@ -3,6 +3,7 @@ from ckeditor.fields import RichTextField
 from apps.usuario.models import Usuario
 
 
+
 class Categorias(models.Model):
     nombre = models.CharField(max_length=50,null=False)
     activo = models.BooleanField(default=True)

@@ -40,11 +40,13 @@
 {% load static %}
     <form action="" method="POST">
         {% csrf_token %}
-        <div class="d-flex justify-content-center mt-5 ">
+        <h6 class="mb-1 ms-4" style="color:#0b5184 ;">{{ usuario.0.usuario.capitalize }}</h6>
+        <div class="d-flex justify-content-center mt-1 ">
             <input class="d-none" value="{{noticia.id}}" name="id" type="text">
             <input class="d-none" value="{{usuario.0.id}}" name="idusuario" type="text">
-            <h6 class="mb-1" style="color:#0b5184 ;">{{ usuario.usuario }}</h6>
-            <textarea class="comentario" style="height: 70px;" name="contenido" placeholder="Agruegar un comentario" id="" cols="50" rows="5"></textarea>
+            
+            <textarea class="comentario" style="height: 70px; " name="contenido" placeholder="Agruegar un comentario" id="" cols="50" rows="5"></textarea>
+            
         </div>
         {% if validacion == 1 %}
             <div class="d-flex  mt-2 mb-1 " style="justify-content:flex-end">
