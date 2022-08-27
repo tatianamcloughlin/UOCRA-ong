@@ -381,7 +381,7 @@ table tr td{
 }
 
 .marcoFoto{
-   height: 600px;
+   height: 10%;
    margin: 0 ;
    
    padding: 25px;
@@ -392,6 +392,10 @@ table tr td{
 
    
 }
+.card-img-top{
+   height: 10%;
+}
+
 #galeria{
    margin-right: 5%;
 }

@@ -30,7 +30,7 @@
                 {% if usuario.0.es_admin %}
                 <li class="nav-item gx-1">
                     
-                    <a class="nav-link Fondomenu2 " href="/admin/cursos/galeria/add/">Agregar Fotos</a>
+                    <a class="nav-link Fondomenu2 " href="{% url 'apps.cursos:addFotos'  %}">Agregar Fotos</a>
                 </li>
                 {% endif%}
             </ul>
@@ -45,7 +45,6 @@
 <div class="conteiner ms-5 me-5 mt-2 " id="galeria">
     <div class="row ">
         {% for fot in foto %}
-        
         <div class=" marcoFoto col-lg-3 col-md-6 col-sm-12 mb-2">
             <a href="{{fot.imagen.url}}"><img class="card-img-top imagen" src="{{fot.imagen.url}}"></a> 
             <div>
@@ -58,10 +57,10 @@
                         
                     </div>
                 </form>
+                {% endif %}
             </div>
 
         </div>
-        {% endif%}
 
         {% endfor %}
     </div>
