@@ -34,7 +34,7 @@ class addFotos(CreateView):
 def ListaFotosPorCurso(request, nombre):
     curso= Cursos.objects.get(nombre=nombre)
     curso1 = Cursos.objects.filter (nombre=nombre)
-    foto = Galeria.objects.filter(curso = curso1)  
+    foto = Galeria.objects.filter(curso = curso1[0])  
     cursos = Cursos.objects.all()
     categorias= Categorias.objects.all()
     contexto = login(request)
