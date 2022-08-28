@@ -8,8 +8,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body ">
-                {% if validacion == 1 %}
-                
+                {% if validacion == 1 and usuario != "" %}
                 <div class=" justify-content-center ">
                     <h5 style="color: #0b5184;">¡HOLA {{usuario.nombre.capitalize}}!</h5>
 
