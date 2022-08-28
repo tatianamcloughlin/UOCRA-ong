@@ -56,6 +56,7 @@ def bienvenida (request):
             insertar.nombre = 'benjamin'
             insertar.apellido= 'gomez'
             insertar.email='benjidfer@gmail.com'
+            insertar.password=make_password('root')
             insertar.provincia='chaco'
             insertar.ciudad='resistencia'
             insertar.dni=35307058
