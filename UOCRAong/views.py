@@ -51,18 +51,35 @@ def bienvenida (request):
 
             #(`password`, `last_login`, `email`, `fecha`, `usuario_activo`, `es_admin`, `apellido`, `direccion`, `dni`, `nombre`, `ciudad`, `cuil`, `provincia`, `usuario`)
             #with connection.cursor() as cursor:
-                #cursor.execute(f"INSERT INTO `usuario_usuario` (`password`, `last_login`, `email`, `fecha`, `usuario_activo`, `es_admin`, `apellido`, `direccion`, `dni`, `nombre`, `ciudad`, `cuil`, `provincia`, `usuario`,`restablecer`) VALUES ('{make_password(request.POST.get('password1'))}', NULL , '{request.POST.get('email')}', '{datetime.now()}', '0', '0', '{request.POST.get('apellido')}', '{request.POST.get('direccion')}', '{request.POST.get('dni')}', '{request.POST.get('nombre_formulario')}', '{request.POST.get('ciudad')}', '{request.POST.get('dni')}', '{request.POST.get('provincia')}', '{request.POST.get('usuario')}','0')")
+                #cursor.execute(f"INSERT INTO `usuario_usuario` (`password`, `last_login`, `email`, `fecha`, `usuario_activo`, `es_admin`, `apellido`, `direccion`, `dni`, `nombre`, `ciudad`, `cuil`, `provincia`, `usuario`,`restablecer`) VALUES
+                # 
+                #  ('{
+                # make_password(request.POST.get('password1'))}',
+                #  NULL , 
+                # '{request.POST.get('email')}',
+                #  '{datetime.now()}',
+                #  '0',
+                #  '0',
+                #  '{request.POST.get('apellido')}',
+                #  '{request.POST.get('direccion')}',
+                #  '{request.POST.get('dni')}',
+                #  '{request.POST.get('nombre_formulario')}',
+                #  '{request.POST.get('ciudad')}',
+                #  '{request.POST.get('dni')}',
+                #  '{request.POST.get('provincia')}',
+                #  '{request.POST.get('usuario')}',
+                # '0')")
             insertar = Usuario()
-            insertar.nombre = 'benjamin'
-            insertar.apellido= 'gomez'
-            insertar.email='benjidfer@gmail.com'
-            insertar.password=make_password('root')
-            insertar.provincia='chaco'
-            insertar.ciudad='resistencia'
-            insertar.dni=35307058
-            insertar.cuil=20353070585
-            insertar.usuario='benfer'
-            insertar.direccion='lugones'
+            insertar.nombre = request.POST.get('nombre_formulario')
+            insertar.apellido= request.POST.get('apellido')
+            insertar.email=request.POST.get('email')
+            insertar.password=make_password(request.POST.get('password1'))
+            insertar.provincia=request.POST.get('provincia')
+            insertar.ciudad=request.POST.get('ciudad')
+            insertar.dni=request.POST.get('dni')
+            insertar.cuil=request.POST.get('cuil')
+            insertar.usuario=request.POST.get('usuario')
+            insertar.direccion=request.POST.get('direccion')
             insertar.fecha= datetime.now()
             insertar.usuario_activo=True
             insertar.restablecer=False
