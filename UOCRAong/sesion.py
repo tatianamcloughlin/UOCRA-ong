@@ -6,7 +6,8 @@ from django.contrib.auth.hashers import check_password,make_password
 def login(request):      
     """Es para validar al inicar si hay datos post"""
     mensaje=""
-    
+    if datos_usuario:
+        validacion=0
     try:
         
         if request.POST.get('editar_password1'):
