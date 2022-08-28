@@ -18,12 +18,11 @@
                     <h6 style="color: #516370;">Email: {{usuario.email}}</h6>
 
                     
-                        <form action="" method="post"  > {% csrf_token %}
-                            <input type="number" name="cambiarContraseña" id="" class="d-none" value=1>
-                            <input class="btn btn-primary botonesForm mt-3 " id="botonCambiarContraseña" type="button" value="Cambiar Contraseña">
-                        </form>
-                        <div class="d-none " id="cambiarContraseña">
-                        <form id="formulario_editar_password " method="POST" action="">{% csrf_token %}
+                        
+                        <input class="btn btn-primary botonesForm mt-3 " id="botonCambiarPassword" type="button" value="Cambiar Contraseña">
+                        
+                        <div class="d-none " id="cambiarPassword">
+                        <form id="formulario_editar_password" method="POST" action="">{% csrf_token %}
                             <div class="mb-3">
                                 <input class="form-control" type="password" id="editar_password1"
                                     name="editar_password1" placeholder="Contraseña Nueva " required>
@@ -32,19 +31,19 @@
                                 <input class="form-control" type="password" id="editar_password2"
                                     name="editar_password2" placeholder="Repetir Contraseña" required>
                                 <div class="d-flex  mt-2 mb-1 " style="justify-content: center;">
-                                    <input class="btn btn-primary sombra m-3" type="submit" value="Guardar Cambios">
+                                    <input class="btn btn-primary sombra m-3" id="guardarCambios" type="submit" value="Guardar Cambios">
                                 </div>
                             </div>
                         </form>
                     </div>
 
-                    <form action="" method="post"> {% csrf_token %}
+                    <form action="" method="POST"> {% csrf_token %}
                         <input type="number" name="cerrar" id="" class="d-none" value=1>
                         <input class="btn btn-primary botonesForm mt-3" type="submit" value="Cerrar Session">
                     </form>
                 </div>
                 {% else %}
-                <form action="" method="post"> {% csrf_token %}
+                <form action="" method="POST"> {% csrf_token %}
 
                     <div class="mb-3">
                         <input type="number" name="cerrar" id="" class="d-none" value=0>
@@ -101,12 +100,23 @@
             password_editar1.style = "border-color:none;"
 
         }
-    })
+    });
 
-    boton = document.getElementById('botonCambiarContraseña')
-    boton.addEventListener('click',(e)=>{
-        e.preventDefault()
-        document.getElementById('cambiarContraseña').setAttribute('class',"")})
+    btnPassword = document.getElementById('botonCambiarPassword')
+    btnPasswordValidacion=true
+    btnPassword.addEventListener('click',(e)=>{
+       if(btnPasswordValidacion){
+        document.getElementById('cambiarPassword').setAttribute('class','')
+        btnPasswordValidacion=false
+       }else{
+        document.getElementById('cambiarPassword').setAttribute('class','d-none')
+        btnPasswordValidacion=true
+       }
+
+        
+        
+    });
+
 
 
 
