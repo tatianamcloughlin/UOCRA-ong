@@ -56,13 +56,13 @@ def login(request):
     
 
         try:    
-            datos_usuario = Usuario.objects.raw("SELECT id,email,nombre, apellido, direccion,password, dni FROM `usuario_usuario` WHERE email='{}'".format(usuario))
-            if check_password(password,datos_usuario[0].password):
+            datos_usuario = Usuario.objects.filter(email=f"{usuario}")
+            if check_password(password,datos_usuario.password):
                 request.session['validacion'] = 1
                 request.session['usuario'] = usuario
                 request.session['password'] = password
                 validacion = 1
-                mensaje="Bienvenido {}".format(datos_usuario[0].email)
+                mensaje="Bienvenido {}".format(datos_usuario.email)
 
                
        

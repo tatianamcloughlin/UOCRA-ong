@@ -10,12 +10,12 @@
             <div class="modal-body ">
                 {% if validacion == 1 %}
                 <div class=" justify-content-center ">
-                    <h5 style="color: #0b5184;">¡HOLA {{usuario.0.nombre.capitalize}}!</h5>
+                    <h5 style="color: #0b5184;">¡HOLA {{usuario.nombre.capitalize}}!</h5>
 
-                    <h6 style="color: #516370;">Apellido/s: {{usuario.0.apellido}}</h6>
-                    <h6 style="color: #516370;">Direccion: {{usuario.0.direccion}}</h6>
-                    <h6 style="color: #516370;">DNI: {{usuario.0.dni}}</h6>
-                    <h6 style="color: #516370;">Email: {{usuario.0.email}}</h6>
+                    <h6 style="color: #516370;">Apellido/s: {{usuario.apellido}}</h6>
+                    <h6 style="color: #516370;">Direccion: {{usuario.direccion}}</h6>
+                    <h6 style="color: #516370;">DNI: {{usuario.dni}}</h6>
+                    <h6 style="color: #516370;">Email: {{usuario.email}}</h6>
 
                     
                         <form action="" method="post"  > {% csrf_token %}
