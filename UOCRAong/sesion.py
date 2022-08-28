@@ -56,7 +56,7 @@ def login(request):
     
 
         try:    
-            datos_usuario = Usuario.objects.filter(email=f"{usuario}")
+            datos_usuario = Usuario.objects.get(email=f"{usuario}")
             if check_password(password,datos_usuario.password):
                 request.session['validacion'] = 1
                 request.session['usuario'] = usuario
