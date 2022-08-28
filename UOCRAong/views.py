@@ -61,7 +61,7 @@ def bienvenida (request):
             insertar.objects.create(usuario_activo=False)
             insertar.objects.create(restablecer=False)
 
-            
+            insertar.save()
             
             
             
