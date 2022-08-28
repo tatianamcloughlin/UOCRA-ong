@@ -78,7 +78,7 @@ def login(request):
                     del request.session['password']
                 except Exception as e:
                     print(e)
-                    datos_usuario=[]       
+                    datos_usuario=""       
                     mensaje="Contraseña Incorrecto"
         except Exception as e:
             try:
@@ -87,7 +87,7 @@ def login(request):
                 del request.session['password']
             except Exception as e:
                 print(e)
-                datos_usuario=[]       
+                datos_usuario=""       
                 mensaje="Email Incorrecto"
     
 
