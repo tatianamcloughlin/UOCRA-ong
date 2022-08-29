@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from apps.noticias.models import Noticias,Categorias
-from apps.cursos.models import Cursos
+from apps.noticia.models import Noticia,Categoria
+from apps.curso.models import Curso
 from apps.usuario.models import Usuario
 from UOCRAong.sesion import login
 from datetime import datetime
@@ -8,9 +8,9 @@ from django.contrib.auth.hashers import make_password
 from django.db import connection
 
 def inicio(request):
-    noticia = Noticias.objects.all()[:3]
-    categoria = Categorias.objects.all()
-    cursos = Cursos.objects.all()
+    noticia = Noticia.objects.all()[:3]
+    categoria = Categoria.objects.all()
+    cursos = Curso.objects.all()
     contexto = login(request)
     contexto['noticia'] = noticia
     contexto['categoria'] = categoria

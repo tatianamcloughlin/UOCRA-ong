@@ -10,18 +10,18 @@
         <div class="collapse navbar-collapse" style="padding-right: 55% ;" tid="navbarSupportedContent">
             <ul class="navbar-nav ms-2 mt-2 me-3 mb-0">
                 <li class="nav-item gx-1">
-                    <a class="nav-link active Fondomenu2 " aria-current="page" href="{% url 'apps.cursos:curso' curso %}">Informacion General</a>
+                    <a class="nav-link active Fondomenu2 " aria-current="page" href="{% url 'apps.curso:curso' curso %}">Informacion General</a>
                 </li>
                 <li class="nav-item gx-1">
-                    <a class="nav-link Fondomenu2 " href="{% url 'apps.cursos:galeria' curso %}">Galeria de Foros</a>
+                    <a class="nav-link Fondomenu2 " href="{% url 'apps.curso:galeria' curso %}">Galeria de Foros</a>
                 </li>
-                {% if usuario.0.es_admin %}
+                {% if usuario.es_admin %}
                 <li class="nav-item gx-1">
-                    <a class="nav-link Fondomenu2 " href="/admin/cursos/galeria/add/">Agregar Fotos</a>
+                    <a class="nav-link Fondomenu2 " href="/admin/curso/galeria/add/">Agregar Fotos</a>
                 </li>
               
                 <li class="nav-item gx-1">
-                    <a class="nav-link Fondomenu2 " href="/admin/cursos/cursos/">Editar Informacion</a>
+                    <a class="nav-link Fondomenu2 " href="/admin/curso/curso/">Editar Informacion</a>
                 </li>
                 {% endif%}
             </ul>
@@ -46,7 +46,7 @@
                     </div>
                     <div class="col-5 ">
                         <img src="{{curso.imagen.url}}" class="card-img-top " alt="..." style="border-radius: 30px ;">
-                        <a href="{% url 'apps.cursos:galeria' curso %}" class="btn btn-primary botonesForm mt-3">Galeria de Fotos</a>
+                        <a href="{% url 'apps.curso:galeria' curso %}" class="btn btn-primary botonesForm mt-3">Galeria de Fotos</a>
                         <a href="https://docs.google.com/forms/d/e/1FAIpQLSe0wV2EEhvdd5EzZ_Z7RiEUu_fEkpQjYTC8ZBlazNV8CTKMyQ/viewform" target="_blank"   class="btn btn-primary botonesForm mt-3">Inscribite!</a>
                     </div>
                 </div>

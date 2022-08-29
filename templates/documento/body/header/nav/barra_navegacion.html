@@ -14,17 +14,17 @@
             <ul class="dropdown-menu FondomenuDesplegable border-0 text-center ">
                 {% for cat in categoria %}
 
-                <li><a class="dropdown-item FondomenuItem " href="{% url 'apps.noticias:listaNoticias' cat %}">{{cat}}</a>
+                <li><a class="dropdown-item FondomenuItem " href="{% url 'apps.noticia:listaNoticias' cat %}">{{cat}}</a>
                 </li>
 
                 {% endfor %}
-                {% if usuario.0.es_admin %}
+                {% if usuario.es_admin %}
               
                 <li>
-                    <a class="dropdown-item FondomenuItemsuperuser  " href="/admin/noticias/noticias/add/"> Agregar Noticias</a>
+                    <a class="dropdown-item FondomenuItemsuperuser  " href="/admin/noticia/noticia/add/"> Agregar Noticias</a>
                 </li>
                 <li>
-                    <a class="dropdown-item FondomenuItemsuperuser  " href="/admin/noticias/noticias/"> Lista de Noticias</a>
+                    <a class="dropdown-item FondomenuItemsuperuser  " href="/admin/noticia/noticia/"> Lista de Noticias</a>
                 </li>
                 {% endif %}
             </ul>
@@ -38,7 +38,7 @@
             <ul class="dropdown-menu FondomenuDesplegable border-0 text-center">
                 {% for cur in cursos %}
                     <li>
-                        <a class="dropdown-item FondomenuItem " href="{% url 'apps.cursos:curso' cur %}">{{cur}}</a>
+                        <a class="dropdown-item FondomenuItem " href="{% url 'apps.curso:curso' cur %}">{{cur}}</a>
                     </li>
                 {% endfor %}
                 <li>
@@ -47,12 +47,12 @@
                 <li>
                     <a class="dropdown-item FondoImp" href="https://docs.google.com/forms/d/e/1FAIpQLSe0wV2EEhvdd5EzZ_Z7RiEUu_fEkpQjYTC8ZBlazNV8CTKMyQ/viewform" target="_blank">Inscribite!</a>
                 </li>
-                {% if usuario.0.es_admin %}
+                {% if usuario.es_admin %}
                 <li>
-                    <a class="dropdown-item FondomenuItemsuperuser  " href="/admin/cursos/galeria/add/"> Agregar Fotos</a>
+                    <a class="dropdown-item FondomenuItemsuperuser  " href="/admin/curso/galeria/add/"> Agregar Fotos</a>
                 </li>
                 <li>
-                    <a class="dropdown-item FondomenuItemsuperuser  " href="{% url 'apps.cursos:gal'  %}"> Galeria fotos</a>
+                    <a class="dropdown-item FondomenuItemsuperuser  " href="{% url 'apps.curso:gal'  %}"> Galeria fotos</a>
                 </li>
                 {% endif %}
             </ul>

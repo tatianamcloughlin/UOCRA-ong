@@ -1,0 +1,32 @@
+{% include 'documento/cabezera.html' %}
+{% load static %}
+{% include 'documento/barra_lateral.html' %}
+
+{% if noticia %}
+<h3 class="tituloppal mt-5  pe-3">{{noticia.0.categoria}}</h3>
+
+    
+    <div class="conteiner-fluid">
+
+        <div class=" row d-flex justify-content-around mt-4 mb-5" style="margin-right: 7%;">
+            {% for not in items %}
+            <div class="card  sombra m-3" style="width: 25rem; ; ">
+                <img src={{not.imagenes.url}} class="card-img-top mt-3 " alt="...">
+                <div class="card-body">
+                    <h6 class="card-title" style="color:rgb(114, 111, 111)">
+                        {{not.fecha.day}}/{{not.fecha.month}}/{{not.fecha.year}}</h6>
+                    <h5 class="card-title">{{not.titulo.capitalize}}</h5>
+                    <p class="card-text">{{not.introduccion}}</p>
+                    <a href="{% url 'apps.noticia:noticia' not.id %}" class="btn btn-primary botonesForm ">Seguir Leyendo</a>
+                </div>
+            </div>
+            {% endfor %}
+            
+        </div>
+    </div >
+    {% else %}
+        <h4>No hay noticias</h4>
+        {% endif%}
+{% include 'noticia/paginacion.html' %}
+
+{% include 'documento/pie_de_pagina.html' %}
