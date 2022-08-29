@@ -46,7 +46,7 @@
     <div class="row ">
         {% for fot in foto %}
         <div class=" marcoFoto col-lg-3 col-md-6 col-sm-12 mb-2">
-            <a href="{{fot.imagen.url}}"><img class="card-img-top imagen" src="{{fot.imagen.url}}"></a> 
+            <a href="{{fot.imagen.url}}" target="_blank"><img class="card-img-top imagen" src="{{fot.imagen.url}}"></a> 
             <div>
                 {% if usuario.0.es_admin %}
                 <form action="" method="POST">

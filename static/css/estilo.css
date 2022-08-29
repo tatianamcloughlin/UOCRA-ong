@@ -393,7 +393,10 @@ table tr td{
    
 }
 .card-img-top{
-   height: 10%;
+   height: 100%;
+}
+.card-img-top2{
+   
 }
 
 #galeria{
