@@ -15,7 +15,7 @@ divFlotante()
 window.onresize = divFlotante;
       aside.addEventListener('mouseover',(e)=>{
         if(e.target.getAttribute('name')=='imagenBarra'){
-                console.log(e.target.parentNode.parentNode.children[0])
+                
                 if(e.target.parentNode.parentNode.children[0].getAttribute('class')=='d-none'){
                         e.target.parentNode.parentNode.children[0].setAttribute('class','')
                 }
@@ -26,7 +26,7 @@ window.onresize = divFlotante;
 
       aside.addEventListener('mouseout',(e)=>{
         if(e.target.getAttribute('name')=='imagenBarra'){
-                console.log(e.target.parentNode.parentNode.children[0])
+                
                 if(e.target.parentNode.parentNode.children[0].getAttribute('class')==''){
                         e.target.parentNode.parentNode.children[0].setAttribute('class','d-none')
                 }
