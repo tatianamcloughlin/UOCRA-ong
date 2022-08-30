@@ -66,6 +66,12 @@ def MostrarGaleria(request):
     contexto['cursos'] = curso
     contexto['categoria'] = categoria
     
+    try:
+        id_foto= request.POST.get('idFoto')
+        borrar = Galeria.objects.get(id=id_foto)
+        borrar.delete()
+    except Exception as e:
+        print(e)
   
     return render (request, 'cursos/galeriaGeneral.html', contexto)
 
