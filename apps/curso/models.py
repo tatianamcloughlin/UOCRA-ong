@@ -20,5 +20,3 @@ class Galeria(models.Model):
     fecha = models.DateTimeField(auto_now=True)
     activo = models.BooleanField( default =True)
 
-    def __str__(self):
-        return self.imagen
