@@ -19,3 +19,6 @@ class Galeria(models.Model):
     imagen = models.ImageField(upload_to="cursos/",null=True)
     fecha = models.DateTimeField(auto_now=True)
     activo = models.BooleanField( default =True)
+
+    def __str__(self):
+        return self.imagen
