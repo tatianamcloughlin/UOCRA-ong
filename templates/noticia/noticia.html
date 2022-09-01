@@ -14,7 +14,7 @@
                   
                     <h2 class="card-title me-4" style="text-align:start  ;"> | {{noticia.titulo.capitalize}}</h2>
       
-                    <img src={{noticia.imagenes.url}} class="card-img-top w-50 m-3" style="float:left;" alt="...">
+                    <img src={{noticia.imagenes}} class="card-img-top w-50 m-3" style="float:left;" alt="...">
                     <h6 class="card-title" style="color:rgb(114, 111, 111)">
                         {{noticia.fecha.day}}/{{noticia.fecha.month}}/{{noticia.fecha.year}}</h6>
                     <div class="card-text div_noticia">{{noticia.texto|safe}}</div>

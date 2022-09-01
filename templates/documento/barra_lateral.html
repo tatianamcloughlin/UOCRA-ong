@@ -5,7 +5,7 @@
             <div id='{{cur.id}}' name="cursosVarios" class="d-none">
                 <h6 class="pe-3">{{cur}}</h6>
             </div>
-            <a href="{% url 'apps.curso:curso' cur %}"><img class="logoCursos mt-0 desvanecer" name="imagenBarra" src="{{cur.logo.url}}" height="100"
+            <a href="{% url 'apps.curso:curso' cur %}"><img class="logoCursos mt-0 desvanecer" name="imagenBarra" src="{{cur.logo}}" height="100"
                     alt=" logo albañil"></a>
         </div>
         {% endfor %}

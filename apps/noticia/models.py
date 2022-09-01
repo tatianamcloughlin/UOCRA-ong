@@ -20,7 +20,7 @@ class Noticia(models.Model):
     fecha = models.DateTimeField(auto_now=True)
     texto = RichTextField(null= True)
     activo = models.BooleanField( default =True)
-    imagenes = models.ImageField(upload_to="noticia/",null=True)
+    imagen = models.URLField(max_length=1050, null=False)
 
     def __str__(self):
         return self.titulo
